@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "splash-mobile"
-include(":app")
+include(":partner-app")
