@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -12,8 +13,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -29,12 +28,16 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
-
-    implementation(libs.appcompat.v7)
-    testImplementation(libs.junit)
+    implementation(libs.appcompat)
+    implementation(libs.core.ktx)
+    implementation(libs.material)
+    implementation(libs.gridlayout)
     androidTestImplementation(libs.runner)
     androidTestImplementation(libs.espresso.core)
 }
