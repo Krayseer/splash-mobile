@@ -1,7 +1,5 @@
 package ru.anykeyers.client_app.domain
 
-import java.util.Date
-
 data class Order (
 
     val id: Long,
@@ -12,6 +10,10 @@ data class Order (
 
     val time: String,
 
-    val date: String
+    val date: String,
+
+    val address: String,
+
+    val services: List<Service>
 
 )

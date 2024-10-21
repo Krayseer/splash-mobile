@@ -9,13 +9,14 @@ import ru.anykeyers.client_app.R
 import ru.anykeyers.client_app.domain.Order
 
 class OrderAdapter(
-    private val orders: List<Order>
+    private val orders: List<Order>,
+    private val onClick: (Order) -> Unit
 ) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
     class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var number: TextView = itemView.findViewById(R.id.orderNumber)
-        var price: TextView = itemView.findViewById(R.id.orderCost)
-        var time: TextView = itemView.findViewById(R.id.orderTime)
+        var numberAndStatus: TextView = itemView.findViewById(R.id.orderNumberAndStatus)
+        val price: TextView = itemView.findViewById(R.id.orderPrice)
+        var timeAndDate: TextView = itemView.findViewById(R.id.orderTime)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
@@ -30,9 +31,14 @@ class OrderAdapter(
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val order: Order = orders[position]
-        holder.number.text = order.id.toString()
-        holder.price.text = order.price.toString() + "₽"
-        holder.time.text = order.time
+        val status: String = if (order.isDone) "Выполнен" else "В очереди"
+        val totalPrice: Int = order.services.sumOf { it.price }
+        holder.numberAndStatus.text = "№${order.id} • ${status}"
+        holder.price.text = "${totalPrice}₽"
+        holder.timeAndDate.text = "${order.date}, ${order.time}"
+        holder.itemView.setOnClickListener {
+            onClick(order)
+        }
     }
 
 }
