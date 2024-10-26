@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import ru.anykeyers.partner_app.fragment.HomeFragment
-import ru.anykeyers.partner_app.fragment.OrderFragment
-import ru.anykeyers.partner_app.fragment.ServiceAndBoxFragment
+import ru.anykeyers.partner_app.ui.fragment.HomeFragment
+import ru.anykeyers.partner_app.ui.fragment.OrderFragment
+import ru.anykeyers.partner_app.ui.fragment.ServiceAndBoxFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
         loadFragment(HomeFragment())
+
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -48,13 +50,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
-
-
 
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()

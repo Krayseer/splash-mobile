@@ -1,4 +1,4 @@
-package ru.anykeyers.partner_app.fragment
+package ru.anykeyers.partner_app.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import ru.anykeyers.partner_app.R
-import ru.anykeyers.partner_app.adapter.OrderAdapter
+import ru.anykeyers.partner_app.ui.adapter.OrderAdapter
+import ru.anykeyers.partner_app.databinding.FragmentOrdersBinding
 import ru.anykeyers.partner_app.decorator.VerticalSpaceItemDecoration
 import ru.anykeyers.partner_app.service.OrderService
 import ru.anykeyers.partner_app.service.impl.InMemoryOrderService
 
 class OrderFragment : Fragment() {
-
-    private lateinit var recyclerView: RecyclerView
 
     private lateinit var orderAdapter: OrderAdapter
 
@@ -25,8 +23,8 @@ class OrderFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_orders, container, false)
+    ): View {
+        val binding = FragmentOrdersBinding.inflate(inflater, container, false)
         orderAdapter = OrderAdapter(orderService.loadOrders(1)) { order ->
             val fragment = OrderDetailsFragment()
             val bundle = Bundle().apply {
@@ -39,12 +37,14 @@ class OrderFragment : Fragment() {
                 ?.commit()
         }
 
-        recyclerView = view.findViewById(R.id.orders_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.addItemDecoration(VerticalSpaceItemDecoration())
-        recyclerView.adapter = orderAdapter
+        binding.apply {
+            ordersRecyclerView.layoutManager = LinearLayoutManager(context)
+            ordersRecyclerView.addItemDecoration(VerticalSpaceItemDecoration())
+            ordersRecyclerView.adapter = orderAdapter
 
-        return view
+        }
+
+        return binding.root
     }
 
 }
