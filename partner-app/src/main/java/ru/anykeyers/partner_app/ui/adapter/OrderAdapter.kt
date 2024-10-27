@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.ItemOrderBinding
-import ru.anykeyers.partner_app.domain.Order
+import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.utils.DateUtils
 
 class OrderAdapter(
-    private val orders: List<Order>,
+    private var orders: List<Order> = mutableListOf(),
     private val onOrderClickListener: (Order) -> Unit
 ) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
@@ -36,6 +36,11 @@ class OrderAdapter(
         }
     }
 
+    fun updateData(value: List<Order>) {
+        this.orders = value
+        notifyDataSetChanged()
+    }
+
     class OrderViewHolder(
         private val binding: ItemOrderBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -44,11 +49,11 @@ class OrderAdapter(
         fun bind(order: Order, onOrderClickListener: (Order) -> Unit) {
             binding.apply {
                 orderId.text = "№ ${order.id}"
-                orderUser.text = order.user
-                orderStatus.text = order.status.localizeName
-                orderTime.text = DateUtils.formatMillisToReadableDate(order.time)
-                orderBox.text = order.box
-                orderPrice.text = "Цена: ${order.price} ₽"
+                orderUser.text = order.user.username
+                orderStatus.text = order.orderState.localizeName
+                orderTime.text = DateUtils.formatMillisToReadableDate(order.startTime)
+                orderBox.text = order.box.name
+                orderPrice.text = "Итого: ${order.services.sumOf { it.price }} ₽"
                 root.setOnClickListener {
                     onOrderClickListener(order)
                 }

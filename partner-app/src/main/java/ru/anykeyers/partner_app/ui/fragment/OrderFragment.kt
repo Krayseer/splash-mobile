@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.adapter.OrderAdapter
 import ru.anykeyers.partner_app.databinding.FragmentOrdersBinding
-import ru.anykeyers.partner_app.decorator.VerticalSpaceItemDecoration
-import ru.anykeyers.partner_app.service.OrderService
-import ru.anykeyers.partner_app.service.impl.InMemoryOrderService
+import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
+import ru.anykeyers.partner_app.ui.vm.OrderViewModel
 
-class OrderFragment : Fragment() {
+class OrderFragment: Fragment() {
 
     private lateinit var orderAdapter: OrderAdapter
 
-    private var orderService: OrderService = InMemoryOrderService()
+    private val vm : OrderViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +25,8 @@ class OrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentOrdersBinding.inflate(inflater, container, false)
-        orderAdapter = OrderAdapter(orderService.loadOrders(1)) { order ->
+
+        orderAdapter = OrderAdapter(mutableListOf()) { order ->
             val fragment = OrderDetailsFragment()
             val bundle = Bundle().apply {
                 putSerializable("order", order)
@@ -35,6 +36,10 @@ class OrderFragment : Fragment() {
                 ?.replace(R.id.fragment_container, fragment)
                 ?.addToBackStack(null)
                 ?.commit()
+        }
+
+        vm.orders.observe(viewLifecycleOwner) {
+            orderAdapter.updateData(vm.orders.value!!)
         }
 
         binding.apply {

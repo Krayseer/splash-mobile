@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.ui.adapter.ServiceAndBoxPagerAdapter
 import ru.anykeyers.partner_app.databinding.FragmentServiceAndBoxBinding
+import ru.anykeyers.partner_app.ui.vm.ConfigurationViewModel
 
 /**
  * Фрагмент "Услуги и боксы"
  */
-class ServiceAndBoxFragment : Fragment() {
+class ConfigurationFragment : Fragment() {
+
+    private val vm: ConfigurationViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +25,8 @@ class ServiceAndBoxFragment : Fragment() {
     ): View {
         val binding = FragmentServiceAndBoxBinding.inflate(inflater, container, false)
 
-        val adapter = ServiceAndBoxPagerAdapter(this)
+        val adapter = ServiceAndBoxPagerAdapter(this, vm.configuration)
+
         binding.viewPager.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

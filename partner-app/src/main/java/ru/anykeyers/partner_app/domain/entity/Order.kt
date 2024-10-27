@@ -1,4 +1,4 @@
-package ru.anykeyers.partner_app.domain
+package ru.anykeyers.partner_app.domain.entity
 
 import java.io.Serializable
 
@@ -13,27 +13,43 @@ class Order(
     /**
      * Пользователь
      */
-    val user: String,
+    val user: User,
+    /**
+     * Идентификатор автомойки
+     */
+    val carWashId: Long,
+    /**
+     * Идентификатор бокса
+     */
+    val box: Box,
     /**
      * Статус заказа
      */
-    val status: State,
+    val orderState: State,
     /**
      * Время записи
      */
-    val time: Long,
+    val startTime: Long,
+    /**
+     * Время окончания заказа
+     */
+    val endTime: Long,
     /**
      * Услуги
      */
     val services: List<Service>,
     /**
-     * Бокс, назначенный на заказ
+     * Вид оплаты
      */
-    val box: String,
+    val paymentType: String,
     /**
      * Цена заказа
      */
-    val price: Int) : Serializable {
+    val price: Int,
+    /**
+     * Время создания заказа
+     */
+    val createdAt: String) : Serializable {
 
     /**
      * Состояние заказа

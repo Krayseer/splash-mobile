@@ -1,4 +1,4 @@
-package ru.anykeyers.partner_app.decorator
+package ru.anykeyers.partner_app.ui.decorator
 
 import android.graphics.Rect
 import android.view.View

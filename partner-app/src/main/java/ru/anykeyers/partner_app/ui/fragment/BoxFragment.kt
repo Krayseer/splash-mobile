@@ -5,17 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.anykeyers.partner_app.ui.adapter.BoxAdapter
 import ru.anykeyers.partner_app.databinding.FragmentBoxBinding
-import ru.anykeyers.partner_app.decorator.VerticalSpaceItemDecoration
-import ru.anykeyers.partner_app.ui.viewmodel.BoxViewModel
+import ru.anykeyers.partner_app.domain.entity.Configuration
+import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
 
 /**
  * Вкладка "Боксы" в фрагменте "Услуги и боксы"
  */
-class BoxFragment : Fragment() {
+class BoxFragment(
+    private val configuration: MutableLiveData<Configuration>
+) : Fragment() {
 
     private lateinit var boxAdapter: BoxAdapter
 
@@ -24,12 +26,11 @@ class BoxFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentBoxBinding.inflate(inflater, container, false)
-        val viewModel = ViewModelProvider(this)[BoxViewModel::class.java]
 
-        boxAdapter = BoxAdapter(emptyList())
+        boxAdapter = BoxAdapter()
 
-        viewModel.boxes.observe(viewLifecycleOwner) {
-            boxAdapter.updateData(1)
+        configuration.observe(viewLifecycleOwner) {
+            boxAdapter.updateData(configuration.value?.boxes!!)
         }
 
         binding.apply {

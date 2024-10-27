@@ -4,15 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.anykeyers.partner_app.databinding.ItemBoxBinding
-import ru.anykeyers.partner_app.domain.Box
-import ru.anykeyers.partner_app.service.BoxService
-import ru.anykeyers.partner_app.service.impl.InMemoryBoxService
+import ru.anykeyers.partner_app.domain.entity.Box
 
 class BoxAdapter(
-    private var boxList: List<Box>
+    private var boxList: List<Box> = mutableListOf()
 ) : RecyclerView.Adapter<BoxAdapter.BoxViewHolder>() {
-
-    private val boxService: BoxService = InMemoryBoxService()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoxViewHolder {
         val binding = ItemBoxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,8 +24,9 @@ class BoxAdapter(
         return boxList.size
     }
 
-    fun updateData(carWashId: Long) {
-        boxList = boxService.loadBoxes(carWashId)
+    fun updateData(boxes: List<Box>) {
+        boxList = boxes
+        notifyDataSetChanged()
     }
 
     class BoxViewHolder(

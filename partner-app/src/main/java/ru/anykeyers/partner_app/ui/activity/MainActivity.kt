@@ -1,4 +1,4 @@
-package ru.anykeyers.partner_app
+package ru.anykeyers.partner_app.ui.activity
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.fragment.HomeFragment
 import ru.anykeyers.partner_app.ui.fragment.OrderFragment
-import ru.anykeyers.partner_app.ui.fragment.ServiceAndBoxFragment
+import ru.anykeyers.partner_app.ui.fragment.ConfigurationFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_service_and_boxes -> {
-                    loadFragment(ServiceAndBoxFragment())
+                    loadFragment(ConfigurationFragment())
                     true
                 }
                 R.id.nav_orders -> {

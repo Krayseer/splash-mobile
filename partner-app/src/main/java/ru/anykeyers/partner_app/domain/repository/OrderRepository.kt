@@ -1,17 +1,17 @@
-package ru.anykeyers.partner_app.service
+package ru.anykeyers.partner_app.domain.repository
 
-import ru.anykeyers.partner_app.domain.Order
+import ru.anykeyers.partner_app.domain.entity.Order
 
 /**
  * Сервис обработки заказов
  */
-interface OrderService {
+interface OrderRepository {
 
     /**
      * Загрузить список заказов
      *
      * @param carWashId идентификатор автомойки
      */
-    fun loadOrders(carWashId: Long) : List<Order>
+    suspend fun loadCarWashOrders(carWashId: Long) : List<Order>
 
 }

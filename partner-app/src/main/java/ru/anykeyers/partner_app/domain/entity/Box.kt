@@ -1,4 +1,4 @@
-package ru.anykeyers.partner_app.domain
+package ru.anykeyers.partner_app.domain.entity
 
 /**
  * Бокс
