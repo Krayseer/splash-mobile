@@ -1,4 +1,4 @@
-package com.androiddev.koindependenciessample.di
+package ru.anykeyers.partner_app.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

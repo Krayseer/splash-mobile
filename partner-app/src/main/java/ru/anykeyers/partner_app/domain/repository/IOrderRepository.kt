@@ -5,7 +5,7 @@ import ru.anykeyers.partner_app.domain.entity.Order
 /**
  * Сервис обработки заказов
  */
-interface OrderRepository {
+interface IOrderRepository {
 
     /**
      * Загрузить список заказов

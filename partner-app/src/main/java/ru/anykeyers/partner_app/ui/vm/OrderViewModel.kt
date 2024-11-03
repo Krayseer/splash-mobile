@@ -3,15 +3,15 @@ package ru.anykeyers.partner_app.ui.vm
 import androidx.lifecycle.MutableLiveData
 import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Order
-import ru.anykeyers.partner_app.domain.repository.ConfigurationRepository
-import ru.anykeyers.partner_app.domain.repository.OrderRepository
+import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
+import ru.anykeyers.partner_app.domain.repository.IOrderRepository
 
 /**
  * VM для фрагмента заказов
  */
 class OrderViewModel(
-    private val orderRepository: OrderRepository,
-    private val configurationRepository: ConfigurationRepository
+    private val orderRepository: IOrderRepository,
+    private val configurationRepository: IConfigurationRepository
 ): HandlingViewModel() {
 
     private var _orders: MutableLiveData<List<Order>> = MutableLiveData()

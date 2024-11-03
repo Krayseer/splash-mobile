@@ -1,4 +1,4 @@
-package com.androiddev.koindependenciessample.di
+package ru.anykeyers.partner_app.di
 
 import android.util.Log
 import com.google.gson.GsonBuilder
@@ -85,7 +85,6 @@ val networkModule = module {
                     socketTimeout = TIME_OUT
                 }
 
-                //Logging
                 install(Logging) {
                     logger = object : Logger {
                         override fun log(message: String) {
@@ -95,14 +94,12 @@ val networkModule = module {
                     }
                 }
 
-                //Http Response
                 install(ResponseObserver) {
                     onResponse { response ->
                         Log.d("HTTP status:", "${response.status.value}")
                     }
                 }
 
-                // Headers
                 install(DefaultRequest) {
                     header(HttpHeaders.ContentType, ContentType.Application.Json)
                 }

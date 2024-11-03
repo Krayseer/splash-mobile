@@ -4,11 +4,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.anykeyers.partner_app.data.remote.ConfigurationAPI
 import ru.anykeyers.partner_app.domain.entity.Configuration
-import ru.anykeyers.partner_app.domain.repository.ConfigurationRepository
+import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 
-class ConfigurationRepositoryImpl(
+class ConfigurationRepository(
     private val configurationAPI: ConfigurationAPI
-): ConfigurationRepository {
+): IConfigurationRepository {
 
     override suspend fun loadConfiguration(): Configuration {
         return withContext(Dispatchers.IO) {

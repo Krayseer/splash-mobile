@@ -5,7 +5,7 @@ import ru.anykeyers.partner_app.domain.entity.Configuration
 /**
  * Сервис обработки конфигураций автомоек
  */
-interface ConfigurationRepository {
+interface IConfigurationRepository {
 
     /**
      * Загрузить автомойку текущего (авторизованного) пользователя

@@ -2,13 +2,13 @@ package ru.anykeyers.partner_app.ui.vm
 
 import androidx.lifecycle.MutableLiveData
 import ru.anykeyers.partner_app.domain.entity.Configuration
-import ru.anykeyers.partner_app.domain.repository.ConfigurationRepository
+import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 
 /**
  * VM для фрагмента "Услуги и боксы"
  */
 class ConfigurationViewModel(
-    private val configurationRepository: ConfigurationRepository
+    private val configurationRepository: IConfigurationRepository
 ): HandlingViewModel() {
 
     private var _configuration: MutableLiveData<Configuration> = MutableLiveData()

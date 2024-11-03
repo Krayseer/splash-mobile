@@ -1,12 +1,12 @@
 package ru.anykeyers.partner_app.di
 
 import org.koin.dsl.module
-import ru.anykeyers.partner_app.data.repository.ConfigurationRepositoryImpl
-import ru.anykeyers.partner_app.data.repository.OrderRepositoryImpl
-import ru.anykeyers.partner_app.domain.repository.ConfigurationRepository
-import ru.anykeyers.partner_app.domain.repository.OrderRepository
+import ru.anykeyers.partner_app.data.repository.ConfigurationRepository
+import ru.anykeyers.partner_app.data.repository.OrderRepository
+import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
+import ru.anykeyers.partner_app.domain.repository.IOrderRepository
 
 val repositoryModule = module {
-    single<ConfigurationRepository> { ConfigurationRepositoryImpl(get()) }
-    single<OrderRepository> { OrderRepositoryImpl(get()) }
+    single<IConfigurationRepository> { ConfigurationRepository(get()) }
+    single<IOrderRepository> { OrderRepository(get()) }
 }

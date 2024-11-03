@@ -1,8 +1,8 @@
 package ru.anykeyers.partner_app
 
 import android.app.Application
-import com.androiddev.koindependenciessample.di.networkModule
-import com.androiddev.koindependenciessample.di.presentationModule
+import ru.anykeyers.partner_app.di.networkModule
+import ru.anykeyers.partner_app.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
