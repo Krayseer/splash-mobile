@@ -13,3 +13,6 @@
 ![video-2.gif](resources/video-2.gif)
 ### Скриншот выполнения запросов к серверу (Wireshark)
 ![img.png](resources/img.png)
+
+## Третий этап: Добавление избранных заказов и фильтрации по заказам
+![video-3.gif](resources/video-3.gif)

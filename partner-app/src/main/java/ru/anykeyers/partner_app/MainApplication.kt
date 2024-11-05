@@ -6,6 +6,7 @@ import ru.anykeyers.partner_app.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
+import ru.anykeyers.partner_app.di.contextModule
 import ru.anykeyers.partner_app.di.repositoryModule
 
 class MainApplication: Application() {
@@ -15,7 +16,7 @@ class MainApplication: Application() {
         startKoin {
             androidLogger()
             androidContext(this@MainApplication)
-            modules(networkModule, presentationModule, repositoryModule)
+            modules(networkModule, presentationModule, repositoryModule, contextModule)
         }
     }
 

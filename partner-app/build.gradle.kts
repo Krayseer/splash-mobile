@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -55,4 +56,16 @@ dependencies {
     implementation(libs.ktor.client.serialization.jvm)
     implementation(libs.ktor.client.logging)
     implementation(libs.serialization.json)
+    implementation (libs.datastore)
+    implementation (libs.datastore.preferences)
+    implementation (libs.lifecycle.livedata.ktx)
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.room.compiler)
+    kapt(libs.androidx.room.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.rxjava2)
+    implementation(libs.androidx.room.rxjava3)
+    implementation(libs.androidx.room.guava)
+    testImplementation(libs.androidx.room.testing)
+    implementation(libs.androidx.room.paging)
 }

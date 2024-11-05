@@ -17,14 +17,14 @@ class TokenProvider(
     /**
      * Получить токен
      */
-    suspend fun getToken(): String {
+    suspend fun getToken(): String? {
         return accessToken ?: refreshToken()
     }
 
     /**
      * Обновить токен
      */
-    suspend fun refreshToken(): String {
+    suspend fun refreshToken(): String? {
         val response = keycloakService.getAccessToken(
             realm = realm,
             username = username,
@@ -35,6 +35,6 @@ class TokenProvider(
 
         accessToken = response.accessToken
         refreshToken = response.refreshToken
-        return accessToken!!
+        return accessToken
     }
 }

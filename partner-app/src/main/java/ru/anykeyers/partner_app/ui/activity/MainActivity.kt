@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.fragment.HomeFragment
-import ru.anykeyers.partner_app.ui.fragment.OrderFragment
-import ru.anykeyers.partner_app.ui.fragment.ConfigurationFragment
+import ru.anykeyers.partner_app.ui.fragment.order.OrderFragment
+import ru.anykeyers.partner_app.ui.fragment.configuration.ConfigurationFragment
 
 class MainActivity : AppCompatActivity() {
 

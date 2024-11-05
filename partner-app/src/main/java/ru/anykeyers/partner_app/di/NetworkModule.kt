@@ -27,13 +27,8 @@ import ru.anykeyers.partner_app.domain.auth.AuthInterceptor
 import ru.anykeyers.partner_app.domain.auth.AuthService
 import ru.anykeyers.partner_app.domain.auth.TokenProvider
 
-private const val KEYCLOAK_BASE_URL = "http://10.0.2.2:80"
-private const val BACKEND_BASE_URL = WebConstant.BASE_URL
-
-private const val TIME_OUT = 6000
-
 val keycloakRetrofit: Retrofit = Retrofit.Builder()
-    .baseUrl(KEYCLOAK_BASE_URL)
+    .baseUrl(WebConstant.KEYCLOAK_BASE_URL)
     .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .build()
@@ -43,8 +38,8 @@ val authService: AuthService = keycloakRetrofit.create(AuthService::class.java)
 val tokenProvider = TokenProvider(
     authService,
     realm = "splash",
-    username = "admin",
-    password = "admin",
+    username = "krayseer",
+    password = "lollallel",
     clientId = "splash-client",
     clientSecret = "mJlyZ40B2qv81QN8lpek1CWxGlaaW7CK"
 )
@@ -59,7 +54,7 @@ val networkModule = module {
 
     single<Retrofit>(qualifier = named("Backend")) {
         Retrofit.Builder()
-            .baseUrl(BACKEND_BASE_URL)
+            .baseUrl(WebConstant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(client)
@@ -69,44 +64,4 @@ val networkModule = module {
     single { get<Retrofit>(qualifier = named("Keycloak")).create(AuthService::class.java) }
     single { get<Retrofit>(qualifier = named("Backend")).create(ConfigurationAPI::class.java) }
     single { get<Retrofit>(qualifier = named("Backend")).create(OrderAPI::class.java) }
-
-    single {
-        HttpClient(Android) {
-            install(JsonFeature)
-            {
-                KotlinxSerializer(Json {
-                    prettyPrint = true
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                })
-
-                engine {
-                    connectTimeout = TIME_OUT
-                    socketTimeout = TIME_OUT
-                }
-
-                install(Logging) {
-                    logger = object : Logger {
-                        override fun log(message: String) {
-                            Log.d("HttpLogging:", message)
-                        }
-
-                    }
-                }
-
-                install(ResponseObserver) {
-                    onResponse { response ->
-                        Log.d("HTTP status:", "${response.status.value}")
-                    }
-                }
-
-                install(DefaultRequest) {
-                    header(HttpHeaders.ContentType, ContentType.Application.Json)
-                }
-
-            }
-
-        }
-
-    }
 }

@@ -81,26 +81,18 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/order_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/order_duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"/>
-
-            <TextView
                 android:id="@+id/order_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
+            <TextView
+                android:id="@+id/order_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/order_price"

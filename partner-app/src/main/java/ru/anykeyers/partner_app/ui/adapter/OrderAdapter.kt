@@ -30,9 +30,9 @@ class OrderAdapter(
     private fun getOrderStateStyle(state: Order.State): Int {
         return when (state) {
             Order.State.WAIT_CONFIRM -> R.color.green_200
-            Order.State.WAIT_PROCESS -> R.color.green_200
-            Order.State.PROCESSING -> R.color.green_200
-            Order.State.PROCESSED -> R.color.green_200
+            Order.State.WAIT_PROCESS -> R.color.blue_400
+            Order.State.PROCESSING -> R.color.purple_200
+            Order.State.PROCESSED -> R.color.teal_700
         }
     }
 
@@ -49,11 +49,12 @@ class OrderAdapter(
         fun bind(order: Order, onOrderClickListener: (Order) -> Unit) {
             binding.apply {
                 orderId.text = "№ ${order.id}"
-                orderUser.text = order.user.username
+                orderUser.text = order.user.userInfo.firstName
                 orderStatus.text = order.orderState.localizeName
-                orderTime.text = DateUtils.formatMillisToReadableDate(order.startTime)
+                orderTime.text = DateUtils.formatRangeToReadableTime(order.startTime, order.endTime)
                 orderBox.text = order.box.name
                 orderPrice.text = "Итого: ${order.services.sumOf { it.price }} ₽"
+
                 root.setOnClickListener {
                     onOrderClickListener(order)
                 }

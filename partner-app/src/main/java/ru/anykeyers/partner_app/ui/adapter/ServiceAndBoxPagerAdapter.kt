@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ru.anykeyers.partner_app.domain.entity.Configuration
-import ru.anykeyers.partner_app.ui.fragment.BoxFragment
-import ru.anykeyers.partner_app.ui.fragment.ServiceFragment
+import ru.anykeyers.partner_app.ui.fragment.configuration.BoxFragment
+import ru.anykeyers.partner_app.ui.fragment.configuration.ServiceFragment
 
 class ServiceAndBoxPagerAdapter(
     fragmentActivity: Fragment,

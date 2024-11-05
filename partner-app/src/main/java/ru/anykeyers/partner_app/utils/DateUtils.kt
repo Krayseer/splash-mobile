@@ -12,14 +12,18 @@ import kotlin.time.toDuration
 object DateUtils {
 
     @SuppressLint("SimpleDateFormat")
-    private val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm")
+    private val fullFormat = SimpleDateFormat("dd.MM.yyyy HH:mm")
+    @SuppressLint("SimpleDateFormat")
+    private val dateTimeFormat = SimpleDateFormat("HH:mm")
+    @SuppressLint("SimpleDateFormat")
+    private val dateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     /**
      * Отформатировать время в миллисекундах в формат день.месяц.год часы:минуты
      */
     fun formatMillisToReadableDate(millis: Long): String {
         val date = Date(millis)
-        return dateFormat.format(date)
+        return fullFormat.format(date)
     }
 
     /**
@@ -36,6 +40,18 @@ object DateUtils {
             minutes > 0 -> "$minutes мин ${if (seconds > 0) "$seconds сек" else ""}".trim()
             else -> "$seconds сек"
         }
+    }
+
+    /**
+     * Отформатировать диапазон времени (начало - конец) в читаемый формат
+     * Формат: "часы:минуты-часы:минуты * день.месяц.год"
+     */
+    fun formatRangeToReadableTime(start: Long, end: Long): String {
+        val startTime = dateTimeFormat.format(Date(start))
+        val endTime = dateTimeFormat.format(Date(end))
+        val date = dateFormat.format(Date(start))
+
+        return "$startTime ~ $endTime : $date"
     }
 
 }
