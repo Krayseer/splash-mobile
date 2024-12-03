@@ -4,6 +4,10 @@
     <string name="app.name">Splash</string>
     <string name="app.logo.content">splash logo</string>
 
+<!--    Блок уведомлений-->
+    <string name="notification.channel.main.id">main_channel_id</string>
+    <string name="notification.channel.main.name">main_channel_name</string>
+
 <!--    Общие сообщения-->
     <string name="common.save">Сохранить</string>
     <string name="common.add">Добавить</string>
@@ -21,6 +25,10 @@
     <string name="profile.order.self_cart">Моя корзина</string>
     <string name="profile.order.self_orders">Мои заказы</string>
     <string name="profile.order.self_messages">Мои сообщения</string>
+
+<!--    Фрагмент настройки уведомлений-->
+    <string name="notification.settings.header">Настройки уведомлений</string>
+    <string name="notification.settings.calendar.header">Уведомить о проверке заказов</string>
 
 <!--    Фрагмент "Заказы"-->
     <string name="order.header">Заказы</string>
