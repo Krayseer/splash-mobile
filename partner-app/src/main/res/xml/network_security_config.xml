@@ -4,5 +4,6 @@
         <domain includeSubdomains="true">10.0.2.2</domain>
         <domain includeSubdomains="true">127.0.0.1</domain>
         <domain includeSubdomains="true">192.168.24.188</domain>
+        <domain includeSubdomains="true">splash.anykeyers.ru</domain>
     </domain-config>
 </network-security-config>

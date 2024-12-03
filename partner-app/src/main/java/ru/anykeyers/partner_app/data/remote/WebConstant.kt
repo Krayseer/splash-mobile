@@ -25,4 +25,9 @@ object WebConstant {
      */
     const val ORDER_SERVICE_URL: String = "${BASE_URL}order"
 
+    /**
+     * URL сервиса обработки пользователей
+     */
+    const val USER_SERVICE_URL: String = "${BASE_URL}user"
+
 }
