@@ -8,6 +8,7 @@ import ru.anykeyers.partner_app.ui.vm.ConfigurationViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderDetailsViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderFilterViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderViewModel
+import ru.anykeyers.partner_app.ui.vm.StatisticsViewModel
 
 /**
  * Модуль ViewModel представлений
@@ -19,5 +20,6 @@ val presentationModule = module {
     viewModel { OrderFilterViewModel(get(), get()) }
     viewModel { (orderId: Long) -> OrderDetailsViewModel(orderId, get()) }
     viewModel { AccountViewModel(get(), androidContext()) }
+    viewModel { StatisticsViewModel(get(), get()) }
 
 }

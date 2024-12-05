@@ -12,4 +12,12 @@
         android:id="@+id/nav_orders"
         android:icon="@drawable/orders"
         android:title="Заказы" />
+    <item
+        android:id="@+id/nav_analytics"
+        android:icon="@drawable/analytics"
+        android:title="Аналитика" />
+    <item
+        android:id="@+id/nav_menu"
+        android:icon="@drawable/menu"
+        android:title="Меню" />
 </menu>

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.anykeyers.partner_app.R
+import ru.anykeyers.partner_app.ui.fragment.AnalyticsFragment
 import ru.anykeyers.partner_app.ui.fragment.account.AccountFragment
 import ru.anykeyers.partner_app.ui.fragment.HomeFragment
 import ru.anykeyers.partner_app.ui.fragment.order.OrderFragment
@@ -39,6 +40,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_orders -> {
                     loadFragment(OrderFragment())
+                    true
+                }
+                R.id.nav_analytics -> {
+                    loadFragment(AnalyticsFragment())
+                    true
+                }
+                R.id.nav_menu -> {
+                    loadFragment(AccountFragment())
                     true
                 }
                 else -> false
