@@ -11,6 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.FragmentAccountBinding
 import ru.anykeyers.partner_app.domain.entity.User
+import ru.anykeyers.partner_app.ui.fragment.account.company.CompanyFragment
 import ru.anykeyers.partner_app.ui.fragment.account.notification.NotificationSettingsFragment
 import ru.anykeyers.partner_app.ui.vm.AccountViewModel
 
@@ -46,6 +47,13 @@ class AccountFragment : Fragment() {
         binding.notificationSettingsTextView.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.fragment_container, NotificationSettingsFragment())
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+
+        binding.compInfo.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, CompanyFragment())
                 ?.addToBackStack(null)
                 ?.commit()
         }

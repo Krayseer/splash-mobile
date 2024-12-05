@@ -9,6 +9,15 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="AdditionalButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/blue_50</item>
+        <item name="android:background">@drawable/rounded_button_background</item>
+        <item name="android:textColor">@color/blue_50</item>
+        <item name="android:textSize">8pt</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="InfoCard" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

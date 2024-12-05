@@ -4,6 +4,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.anykeyers.partner_app.ui.vm.AccountViewModel
+import ru.anykeyers.partner_app.ui.vm.CompanyViewModel
 import ru.anykeyers.partner_app.ui.vm.ConfigurationViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderDetailsViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderFilterViewModel
@@ -21,5 +22,6 @@ val presentationModule = module {
     viewModel { (orderId: Long) -> OrderDetailsViewModel(orderId, get()) }
     viewModel { AccountViewModel(get(), androidContext()) }
     viewModel { StatisticsViewModel(get(), get()) }
+    viewModel { CompanyViewModel(get()) }
 
 }

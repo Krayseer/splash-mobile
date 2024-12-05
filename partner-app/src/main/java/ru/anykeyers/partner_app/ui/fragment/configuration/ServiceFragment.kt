@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.adapter.ServiceAdapter
 import ru.anykeyers.partner_app.databinding.FragmentServiceBinding
 import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
+import ru.anykeyers.partner_app.ui.fragment.order.OrderDetailsFragment
+
 /**
  * Вкладка "Услуги" в фрагменте "Услуги и боксы"
  */
@@ -24,7 +27,13 @@ class ServiceFragment(
     ): View {
         val binding = FragmentServiceBinding.inflate(inflater, container, false)
 
-        val serviceAdapter = ServiceAdapter()
+        val serviceAdapter = ServiceAdapter { service ->
+            val fragment = ServiceCreateFragment(false, service)
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, fragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
 
         configuration.observe(viewLifecycleOwner) { config ->
             config?.let {
@@ -33,6 +42,13 @@ class ServiceFragment(
         }
 
         binding.apply {
+            addButton.setOnClickListener {
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.fragment_container, ServiceCreateFragment(true))
+                    ?.addToBackStack(null)
+                    ?.commit()
+            }
+
             serviceRecyclerView.layoutManager = LinearLayoutManager(context)
             serviceRecyclerView.addItemDecoration(VerticalSpaceItemDecoration())
             serviceRecyclerView.adapter = serviceAdapter

@@ -27,15 +27,6 @@ class OrderAdapter(
 
     override fun getItemCount(): Int = orders.size
 
-    private fun getOrderStateStyle(state: Order.State): Int {
-        return when (state) {
-            Order.State.WAIT_CONFIRM -> R.color.green_200
-            Order.State.WAIT_PROCESS -> R.color.blue_400
-            Order.State.PROCESSING -> R.color.purple_200
-            Order.State.PROCESSED -> R.color.teal_700
-        }
-    }
-
     fun updateData(value: List<Order>) {
         this.orders = value
         notifyDataSetChanged()

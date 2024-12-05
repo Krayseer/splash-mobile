@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import ru.anykeyers.partner_app.R
@@ -26,6 +27,7 @@ class NotificationConfigurator(
         createChannel()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun createChannel() {
         val notificationChannel = NotificationChannel(
             context.resources.getString(R.string.notification_channel_main_id),

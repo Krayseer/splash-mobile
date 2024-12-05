@@ -21,10 +21,9 @@
     <string name="profile.notification.header">Уведомления</string>
     <string name="profile.notification.self">Мои уведомления</string>
     <string name="profile.notification.settings">Настройки уведомлений</string>
-    <string name="profile.order.header">Заказы</string>
-    <string name="profile.order.self_cart">Моя корзина</string>
-    <string name="profile.order.self_orders">Мои заказы</string>
-    <string name="profile.order.self_messages">Мои сообщения</string>
+    <string name="profile.management.header">Управление компанией</string>
+    <string name="profile.management.comp_info">Информация о компании</string>
+    <string name="profile.management.employees">Сотрудники</string>
 
 <!--    Фрагмент настройки уведомлений-->
     <string name="notification.settings.header">Настройки уведомлений</string>
