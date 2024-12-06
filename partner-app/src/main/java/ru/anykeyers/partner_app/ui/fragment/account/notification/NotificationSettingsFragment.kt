@@ -6,11 +6,13 @@ import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import ru.anykeyers.partner_app.databinding.FragmentNotificationSettingsBinding
 import ru.anykeyers.partner_app.domain.notification.NotificationConstant
@@ -26,6 +28,7 @@ import java.util.Calendar
  */
 class NotificationSettingsFragment : Fragment() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("DefaultLocale")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,6 +68,7 @@ class NotificationSettingsFragment : Fragment() {
         return timePattern.matches(input)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun parseTimeInput(input: String): LocalTime? {
         return try {
             val (hour, minute) = input.split(":").map { it.toInt() }
@@ -74,6 +78,7 @@ class NotificationSettingsFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun scheduleNotification(selectedTime: LocalTime) {
         val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 

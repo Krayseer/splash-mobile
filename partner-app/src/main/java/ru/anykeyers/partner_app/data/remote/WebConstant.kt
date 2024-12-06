@@ -21,6 +21,11 @@ object WebConstant {
     const val CAR_WASH_SERVICE_URL: String = "${BASE_URL}car-wash"
 
     /**
+     * URL сервиса обработки услуг
+     */
+    const val SERVICE_OF_SERVICES_URL: String = "${BASE_URL}service"
+
+    /**
      * URL сервиса обработки заказов
      */
     const val ORDER_SERVICE_URL: String = "${BASE_URL}order"

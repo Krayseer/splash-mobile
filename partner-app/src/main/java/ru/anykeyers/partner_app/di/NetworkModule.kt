@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.anykeyers.partner_app.data.remote.WebConstant
 import ru.anykeyers.partner_app.data.remote.ConfigurationAPI
 import ru.anykeyers.partner_app.data.remote.OrderAPI
+import ru.anykeyers.partner_app.data.remote.ServiceAPI
 import ru.anykeyers.partner_app.data.remote.StatisticsAPI
 import ru.anykeyers.partner_app.data.remote.UserAPI
 import ru.anykeyers.partner_app.domain.auth.AuthInterceptor
@@ -34,6 +35,7 @@ val networkModule = module {
 
     single { get<Retrofit>(qualifier = named("Keycloak")).create(AuthService::class.java) }
     single { get<Retrofit>(qualifier = named("Backend")).create(ConfigurationAPI::class.java) }
+    single { get<Retrofit>(qualifier = named("Backend")).create(ServiceAPI::class.java) }
     single { get<Retrofit>(qualifier = named("Backend")).create(OrderAPI::class.java) }
     single { get<Retrofit>(qualifier = named("Backend")).create(UserAPI::class.java) }
     single { get<Retrofit>(qualifier = named("Backend")).create(StatisticsAPI::class.java) }

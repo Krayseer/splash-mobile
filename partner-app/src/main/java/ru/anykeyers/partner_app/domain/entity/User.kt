@@ -15,7 +15,11 @@ data class User (
     /**
      * Данные пользователя
      */
-    val userInfo: Info
+    val userInfo: Info,
+    /**
+     * Роли пользователя
+     */
+    val roles: List<Role>
 ) {
     data class Info (
         /**

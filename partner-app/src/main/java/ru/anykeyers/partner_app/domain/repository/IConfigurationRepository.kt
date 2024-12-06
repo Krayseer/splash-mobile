@@ -1,8 +1,10 @@
 package ru.anykeyers.partner_app.domain.repository
 
-import okhttp3.ResponseBody
-import retrofit2.Call
+import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.Configuration
+import ru.anykeyers.partner_app.domain.entity.Employee
+import ru.anykeyers.partner_app.domain.entity.Invitation
+import ru.anykeyers.partner_app.domain.entity.Service
 
 /**
  * Сервис обработки конфигураций автомоек
@@ -15,8 +17,28 @@ interface IConfigurationRepository {
     suspend fun loadConfiguration(): Configuration
 
     /**
-     * Загрузить отчет автомойки текущего пользователя
+     * Загрузить список работников автомойки
      */
-    suspend fun loadConfigurationPdf(): Call<ResponseBody>
+    suspend fun loadEmployees(): List<Employee>
+
+    /**
+     * Загрузить список приглашений, отправленных владельцем автомойкой
+     */
+    suspend fun loadInvitations(): List<Invitation>
+
+    /**
+     * Добавить новый бокс
+     */
+    suspend fun addBox(box: Box)
+
+    /**
+     * Обновить бокс
+     */
+    suspend fun updateBox(box: Box)
+
+    /**
+     * Удалить бокс
+     */
+    suspend fun deleteBox(boxId: Long)
 
 }

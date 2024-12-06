@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.databinding.FragmentBoxCreateBinding
 import ru.anykeyers.partner_app.domain.entity.Box
+import ru.anykeyers.partner_app.ui.vm.ConfigurationViewModel
 
 class BoxCreateFragment(
     private val isCreate: Boolean,
     private val box: Box? = null
 ) : Fragment() {
+
+    private val vm: ConfigurationViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,6 +24,26 @@ class BoxCreateFragment(
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentBoxCreateBinding.inflate(inflater, container, false)
+        binding.apply {
+            submitButton.setOnClickListener {
+                val newBox = Box(0, boxName.text.toString())
+                vm.addBox(newBox)
+                parentFragmentManager.popBackStack()
+            }
+            updateButton.setOnClickListener {
+                box?.let {
+                    it.name = boxName.text.toString()
+                    vm.updateBox(it)
+                }
+                parentFragmentManager.popBackStack()
+            }
+            deleteButton.setOnClickListener {
+                box?.let {
+                    vm.deleteBox(it.id)
+                }
+                parentFragmentManager.popBackStack()
+            }
+        }
         initByMode(binding)
         initializeIfUpdate(binding)
         return binding.root
@@ -41,7 +65,7 @@ class BoxCreateFragment(
 
     private fun initializeIfUpdate(binding: FragmentBoxCreateBinding) {
         binding.apply {
-            box?.name?.let { serviceName.setText(it) }
+            box?.name?.let { boxName.setText(it) }
         }
     }
 

@@ -9,10 +9,6 @@ data class Service(
      */
     val id: Long,
     /**
-     * Идентификатор автомойки, которой принадлежит услуга
-     */
-    val carWashId: Long,
-    /**
      * Название
      */
     val name: String,

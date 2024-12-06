@@ -85,7 +85,7 @@ class ServiceTableAdapter(
         return TextView(context).apply {
             this.text = text
             gravity = grav
-            setPadding(16, 8, 8, 8)
+            setPadding(16, 16, 16, 16)
             if (isHeader) {
                 setTypeface(null, Typeface.BOLD)
                 setTextColor(Color.BLACK)

@@ -12,6 +12,7 @@ import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.FragmentAccountBinding
 import ru.anykeyers.partner_app.domain.entity.User
 import ru.anykeyers.partner_app.ui.fragment.account.company.CompanyFragment
+import ru.anykeyers.partner_app.ui.fragment.account.company.EmployeeManagementFragment
 import ru.anykeyers.partner_app.ui.fragment.account.notification.NotificationSettingsFragment
 import ru.anykeyers.partner_app.ui.vm.AccountViewModel
 
@@ -54,6 +55,13 @@ class AccountFragment : Fragment() {
         binding.compInfo.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.fragment_container, CompanyFragment())
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+
+        binding.employees.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, EmployeeManagementFragment())
                 ?.addToBackStack(null)
                 ?.commit()
         }
