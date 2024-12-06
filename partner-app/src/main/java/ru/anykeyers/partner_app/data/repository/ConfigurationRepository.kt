@@ -7,7 +7,7 @@ import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Employee
 import ru.anykeyers.partner_app.domain.entity.Invitation
-import ru.anykeyers.partner_app.domain.entity.Service
+import ru.anykeyers.partner_app.domain.entity.dto.ConfigurationUpdateRequest
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 
 class ConfigurationRepository(
@@ -17,6 +17,19 @@ class ConfigurationRepository(
     override suspend fun loadConfiguration(): Configuration {
         return withContext(Dispatchers.IO) {
             configurationAPI.getUserConfiguration()
+        }
+    }
+
+    override suspend fun updateConfiguration(configurationUpdateRequest: ConfigurationUpdateRequest) {
+        return withContext(Dispatchers.IO) {
+            val fields = mapOf<String, String>(
+                "organizationInfo" to (configurationUpdateRequest.organizationInfo ?: ""),
+                "openTime" to (configurationUpdateRequest.openTime ?: ""),
+                "closeTime" to (configurationUpdateRequest.closeTime ?: ""),
+                "orderProcessMode" to (configurationUpdateRequest.orderProcessMode ?: ""),
+                "address" to (configurationUpdateRequest.address ?: "")
+            )
+            configurationAPI.updateConfiguration(fields)
         }
     }
 

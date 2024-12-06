@@ -5,6 +5,7 @@ import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Employee
 import ru.anykeyers.partner_app.domain.entity.Invitation
 import ru.anykeyers.partner_app.domain.entity.Service
+import ru.anykeyers.partner_app.domain.entity.dto.ConfigurationUpdateRequest
 
 /**
  * Сервис обработки конфигураций автомоек
@@ -15,6 +16,11 @@ interface IConfigurationRepository {
      * Загрузить автомойку текущего (авторизованного) пользователя
      */
     suspend fun loadConfiguration(): Configuration
+
+    /**
+     * Обновить конфигурацию автомойки
+     */
+    suspend fun updateConfiguration(configurationUpdateRequest: ConfigurationUpdateRequest)
 
     /**
      * Загрузить список работников автомойки

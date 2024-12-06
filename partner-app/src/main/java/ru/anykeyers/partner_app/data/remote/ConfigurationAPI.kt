@@ -2,6 +2,8 @@ package ru.anykeyers.partner_app.data.remote
 
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.FieldMap
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -10,6 +12,7 @@ import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Employee
 import ru.anykeyers.partner_app.domain.entity.Invitation
+import ru.anykeyers.partner_app.domain.entity.dto.ConfigurationUpdateRequest
 
 /**
  * API для работы с удаленным сервисом обработки конфигураций автомоек
@@ -21,6 +24,13 @@ interface ConfigurationAPI {
      */
     @GET("${WebConstant.CAR_WASH_SERVICE_URL}/configuration")
     suspend fun getUserConfiguration(): Configuration
+
+    /**
+     * Обновить конфигурацию автомойки
+     */
+    @FormUrlEncoded
+    @PUT("${WebConstant.CAR_WASH_SERVICE_URL}/configuration")
+    suspend fun updateConfiguration(@FieldMap fields: Map<String, String>)
 
     /**
      * Получить список работников автомойки
@@ -45,7 +55,6 @@ interface ConfigurationAPI {
      */
     @PUT("${WebConstant.CAR_WASH_SERVICE_URL}/box")
     suspend fun updateBox(@Body box: Box)
-
     /**
      * Удалить бокс
      */
