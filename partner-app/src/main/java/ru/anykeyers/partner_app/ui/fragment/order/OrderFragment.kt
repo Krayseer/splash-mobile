@@ -13,6 +13,9 @@ import ru.anykeyers.partner_app.databinding.FragmentOrdersBinding
 import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
 import ru.anykeyers.partner_app.ui.vm.OrderViewModel
 
+/**
+ * Фрагмент "Заказы"
+ */
 class OrderFragment: Fragment() {
 
     private lateinit var orderAdapter: OrderAdapter

@@ -12,7 +12,6 @@ import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Employee
 import ru.anykeyers.partner_app.domain.entity.Invitation
-import ru.anykeyers.partner_app.domain.entity.dto.ConfigurationUpdateRequest
 
 /**
  * API для работы с удаленным сервисом обработки конфигураций автомоек
@@ -27,6 +26,8 @@ interface ConfigurationAPI {
 
     /**
      * Обновить конфигурацию автомойки
+     *
+     * @param fields поля, заполняемые по факту "FormData"
      */
     @FormUrlEncoded
     @PUT("${WebConstant.CAR_WASH_SERVICE_URL}/configuration")
@@ -46,17 +47,23 @@ interface ConfigurationAPI {
 
     /**
      * Добавить новый бокс
+     *
+     * @param box данные о новом боксе
      */
     @POST("${WebConstant.CAR_WASH_SERVICE_URL}/box")
     suspend fun addBox(@Body box: Box)
 
     /**
      * Обновить бокс
+     *
+     * @param box обновленные данные о боксе
      */
     @PUT("${WebConstant.CAR_WASH_SERVICE_URL}/box")
     suspend fun updateBox(@Body box: Box)
     /**
      * Удалить бокс
+     *
+     * @param boxId идентификатор бокса
      */
     @DELETE("${WebConstant.CAR_WASH_SERVICE_URL}/box/{boxId}")
     suspend fun deleteBox(@Path("boxId") boxId: Long)

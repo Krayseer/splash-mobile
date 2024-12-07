@@ -6,6 +6,9 @@ import ru.anykeyers.partner_app.data.remote.OrderAPI
 import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.domain.repository.IOrderRepository
 
+/**
+ * Реализация сервиса работы с заказами
+ */
 class OrderRepository(
     private val orderAPI: OrderAPI
 ): IOrderRepository {

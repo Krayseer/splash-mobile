@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.anykeyers.partner_app.databinding.ItemBoxBinding
 import ru.anykeyers.partner_app.domain.entity.Box
 
+/**
+ * Адаптер списка боксов
+ */
 class BoxAdapter(
     private var boxList: List<Box> = mutableListOf(),
     private val onClickBox: (Box) -> Unit

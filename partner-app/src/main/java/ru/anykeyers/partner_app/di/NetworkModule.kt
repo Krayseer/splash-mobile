@@ -22,9 +22,9 @@ import ru.anykeyers.partner_app.domain.auth.TokenProvider
  */
 val networkModule = module {
 
-    single<Retrofit>(qualifier = named("Keycloak")) { keycloakRetrofit }
+    single<Retrofit>(qualifier = named(ProviderName.KEYCLOAK_PROVIDER)) { keycloakRetrofit }
 
-    single<Retrofit>(qualifier = named("Backend")) {
+    single<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)) {
         Retrofit.Builder()
             .baseUrl(WebConstant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
@@ -33,12 +33,12 @@ val networkModule = module {
             .build()
     }
 
-    single { get<Retrofit>(qualifier = named("Keycloak")).create(AuthService::class.java) }
-    single { get<Retrofit>(qualifier = named("Backend")).create(ConfigurationAPI::class.java) }
-    single { get<Retrofit>(qualifier = named("Backend")).create(ServiceAPI::class.java) }
-    single { get<Retrofit>(qualifier = named("Backend")).create(OrderAPI::class.java) }
-    single { get<Retrofit>(qualifier = named("Backend")).create(UserAPI::class.java) }
-    single { get<Retrofit>(qualifier = named("Backend")).create(StatisticsAPI::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(UserAPI::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(OrderAPI::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(ServiceAPI::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.KEYCLOAK_PROVIDER)).create(AuthService::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(StatisticsAPI::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(ConfigurationAPI::class.java) }
 
     single<TokenProvider> { tokenProvider }
 
@@ -64,3 +64,11 @@ val tokenProvider = TokenProvider(
 val client = OkHttpClient.Builder()
     .addInterceptor(AuthInterceptor(tokenProvider))
     .build()
+
+/**
+ * Названия провайдеров
+ */
+private object ProviderName {
+    const val BACKEND_PROVIDER = "BACKEND"
+    const val KEYCLOAK_PROVIDER = "KEYCLOAK"
+}

@@ -10,6 +10,9 @@ import retrofit2.http.Path
  */
 interface AuthService {
 
+    /**
+     * Получить Access токен пользователя
+     */
     @POST("realms/{realm}/protocol/openid-connect/token")
     @FormUrlEncoded
     suspend fun getAccessToken(

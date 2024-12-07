@@ -5,6 +5,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import ru.anykeyers.partner_app.ui.fragment.account.company.EmployeeFragment
 import ru.anykeyers.partner_app.ui.fragment.account.company.InvitationFragment
 
+/**
+ * Адаптер переключателя списков сотрудников и приглашений
+ */
 class EmployeePagerAdapter(
     fragmentActivity: Fragment
 ) : FragmentStateAdapter(fragmentActivity) {

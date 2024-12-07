@@ -17,6 +17,9 @@ import ru.anykeyers.partner_app.domain.entity.statistics.DateStatistics
 import ru.anykeyers.partner_app.ui.adapter.ServiceTableAdapter
 import ru.anykeyers.partner_app.ui.vm.StatisticsViewModel
 
+/**
+ * Фрагмент "Аналитика"
+ */
 class AnalyticsFragment : Fragment() {
 
     private lateinit var binding: FragmentAnalyticsBinding

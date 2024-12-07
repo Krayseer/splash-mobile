@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.ItemOrderBinding
 import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.utils.DateUtils
 
+/**
+ * Адаптер списка заказов
+ */
 class OrderAdapter(
     private var orders: List<Order> = mutableListOf(),
     private val onOrderClickListener: (Order) -> Unit

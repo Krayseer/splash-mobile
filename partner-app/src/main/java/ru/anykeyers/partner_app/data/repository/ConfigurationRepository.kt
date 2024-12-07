@@ -10,6 +10,9 @@ import ru.anykeyers.partner_app.domain.entity.Invitation
 import ru.anykeyers.partner_app.domain.entity.dto.ConfigurationUpdateRequest
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 
+/**
+ * Реализация сервиса работы с конфигурациями автомоек
+ */
 class ConfigurationRepository(
     private val configurationAPI: ConfigurationAPI
 ): IConfigurationRepository {

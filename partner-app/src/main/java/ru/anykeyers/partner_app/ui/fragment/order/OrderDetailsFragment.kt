@@ -14,6 +14,9 @@ import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.ui.vm.OrderDetailsViewModel
 import ru.anykeyers.partner_app.utils.DateUtils
 
+/**
+ * Фрагмент "Детали заказа"
+ */
 class OrderDetailsFragment : Fragment() {
 
     private lateinit var vm: OrderDetailsViewModel

@@ -7,6 +7,9 @@ import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.Service
 import ru.anykeyers.partner_app.domain.entity.User
 
+/**
+ * Конвертер для избранных заказов
+ */
 class FavoriteOrderConverter {
 
     private val gson = Gson()

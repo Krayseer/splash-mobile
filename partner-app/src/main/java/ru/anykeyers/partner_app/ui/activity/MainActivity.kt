@@ -15,6 +15,9 @@ import ru.anykeyers.partner_app.ui.fragment.HomeFragment
 import ru.anykeyers.partner_app.ui.fragment.order.OrderFragment
 import ru.anykeyers.partner_app.ui.fragment.configuration.ConfigurationFragment
 
+/**
+ * Главный Activity приложения
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

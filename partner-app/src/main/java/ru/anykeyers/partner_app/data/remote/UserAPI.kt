@@ -11,9 +11,7 @@ import ru.anykeyers.partner_app.domain.entity.User
 interface UserAPI {
 
     /**
-     * Получить список заказов автомойки
-     *
-     * @param id идентификатор автомойки
+     * Получить текущего пользователя
      */
     @GET(WebConstant.USER_SERVICE_URL)
     suspend fun getCurrentUser(): User

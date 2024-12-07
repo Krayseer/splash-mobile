@@ -7,6 +7,9 @@ import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.ui.fragment.configuration.BoxFragment
 import ru.anykeyers.partner_app.ui.fragment.configuration.ServiceFragment
 
+/**
+ * Адаптер переключателя между списками боксов и услуг
+ */
 class ServiceAndBoxPagerAdapter(
     fragmentActivity: Fragment,
     configuration: MutableLiveData<Configuration>

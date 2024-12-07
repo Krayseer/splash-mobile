@@ -11,6 +11,9 @@ import ru.anykeyers.partner_app.di.contextModule
 import ru.anykeyers.partner_app.di.repositoryModule
 import ru.anykeyers.partner_app.domain.notification.NotificationConfigurator
 
+/**
+ * Приложение
+ */
 class MainApplication: Application() {
 
     private val notificationConfigurator by lazy { createNotificationConfigurator() }
@@ -25,6 +28,9 @@ class MainApplication: Application() {
         }
     }
 
+    /**
+     * Создать конфигуратор каналов уведомлений
+     */
     private fun createNotificationConfigurator(): NotificationConfigurator {
         return NotificationConfigurator(NotificationManagerCompat.from(this), this)
     }

@@ -11,6 +11,9 @@ import androidx.core.content.ContextCompat
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.domain.entity.Invitation
 
+/**
+ * Адаптер для построения таблицы приглашений
+ */
 class InvitationTableAdapter(
     private val context: Context
 ) {

@@ -16,6 +16,9 @@ import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.domain.entity.OrderFilter
 import ru.anykeyers.partner_app.ui.vm.OrderFilterViewModel
 
+/**
+ * Фрагмент "Фильтр заказов"
+ */
 class OrderFilterFragment : Fragment() {
 
     private val vm: OrderFilterViewModel by viewModel()

@@ -7,6 +7,9 @@ import ru.anykeyers.partner_app.domain.auth.TokenProvider
 import ru.anykeyers.partner_app.domain.entity.User
 import ru.anykeyers.partner_app.domain.repository.IUserRepository
 
+/**
+ * Реализация сервиса работы с пользователями
+ */
 class UserRepository(
     private val userAPI: UserAPI,
     private  val tokenProvider: TokenProvider

@@ -6,6 +6,9 @@ import ru.anykeyers.partner_app.data.remote.ServiceAPI
 import ru.anykeyers.partner_app.domain.entity.Service
 import ru.anykeyers.partner_app.domain.repository.IServiceRepository
 
+/**
+ * Реализация сервиса работы с услугами
+ */
 class ServiceRepository(
     private val serviceAPI: ServiceAPI
 ) : IServiceRepository {

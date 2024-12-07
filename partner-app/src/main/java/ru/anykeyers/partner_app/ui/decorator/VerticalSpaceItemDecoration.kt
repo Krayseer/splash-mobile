@@ -5,7 +5,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-
+/**
+ * Декоратор для вертикального отступа между элементами адаптера
+ */
 class VerticalSpaceItemDecoration() : ItemDecoration() {
 
     override fun getItemOffsets(

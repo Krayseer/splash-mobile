@@ -10,13 +10,11 @@ import ru.anykeyers.partner_app.domain.entity.statistics.StatisticsResponse
 interface StatisticsAPI {
 
     /**
-     * Получить список заказов автомойки
+     * Получить статистику автомойки
      *
      * @param id идентификатор автомойки
      */
     @GET("${WebConstant.STATISTICS_SERVICE_URL}/{carWashId}")
-    suspend fun getStatistics(
-        @Path("carWashId") id: Long
-    ): StatisticsResponse
+    suspend fun getStatistics(@Path("carWashId") id: Long): StatisticsResponse
 
 }

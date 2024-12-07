@@ -8,6 +8,9 @@ import ru.anykeyers.partner_app.databinding.ItemServiceBinding
 import ru.anykeyers.partner_app.domain.entity.Service
 import ru.anykeyers.partner_app.utils.DateUtils
 
+/**
+ * Адаптер списка услуг
+ */
 class ServiceAdapter (
     private var services: List<Service> = mutableListOf(),
     private val onClickService: (Service) -> Unit

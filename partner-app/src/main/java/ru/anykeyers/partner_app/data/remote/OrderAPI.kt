@@ -15,8 +15,6 @@ interface OrderAPI {
      * @param id идентификатор автомойки
      */
     @GET("${WebConstant.ORDER_SERVICE_URL}/car-wash/{carWashId}")
-    suspend fun getCarWashOrders(
-        @Path("carWashId") id: Long
-    ): List<Order>
+    suspend fun getCarWashOrders(@Path("carWashId") id: Long): List<Order>
 
 }

@@ -3,6 +3,9 @@ package ru.anykeyers.partner_app.domain.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Сущность избранного заказа
+ */
 @Entity(tableName = "favorite_orders")
 data class OrderEntity(
     @PrimaryKey val id: Long,
