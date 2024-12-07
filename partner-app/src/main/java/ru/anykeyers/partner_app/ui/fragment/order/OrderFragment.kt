@@ -79,7 +79,7 @@ class OrderFragment: Fragment() {
         }
 
         parentFragmentManager.setFragmentResultListener("filterApplied", this) { _, _ ->
-            vm.notifyChange()
+            vm.toggleFavorite()
         }
     }
 
@@ -94,7 +94,7 @@ class OrderFragment: Fragment() {
             }
 
         }
-        binding.favoriteIcon.setOnClickListener { vm.updateFavorite() }
+        binding.favoriteIcon.setOnClickListener { vm.toggleFavorite() }
     }
 
 }

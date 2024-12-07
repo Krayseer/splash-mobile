@@ -11,9 +11,11 @@
 <!--    Общие сообщения-->
     <string name="common.save">Сохранить</string>
     <string name="common.add">Добавить</string>
+    <string name="common.delete">Удалить</string>
     <string name="common.apply">Применить</string>
     <string name="common.phone">Телефон</string>
     <string name="common.email">Почта</string>
+    <string name="common.name">Название</string>
 
 <!--    Фрагмент "Профиль"-->
     <string name="profile.avatar.logo.content">Аватарка пользователя</string>
@@ -24,10 +26,12 @@
     <string name="profile.management.header">Управление компанией</string>
     <string name="profile.management.comp_info">Информация о компании</string>
     <string name="profile.management.employees">Сотрудники</string>
+    <string name="profile.report.generate">Выгрузить отчет</string>
 
 <!--    Фрагмент настройки уведомлений-->
     <string name="notification.settings.header">Настройки уведомлений</string>
     <string name="notification.settings.calendar.header">Уведомить о проверке заказов</string>
+    <string name="notification.time.format">HH:mm@</string>
 
 <!--    Фрагмент "Заказы"-->
     <string name="order.header">Заказы</string>
@@ -51,5 +55,21 @@
 
 <!--    Фрагмент "Услуги и боксы"-->
     <string name="service_and_box.header">Услуги и боксы</string>
+    <string name="box.header">Бокс</string>
+    <string name="service.header">Услуга</string>
+    <string name="service.price">Цена (₽)</string>
+    <string name="service.duration">Время выполнения (минуты)</string>
 
+<!--    Фрагмент "Аналитика"-->
+    <string name="analytics.header">Аналитика</string>
+    <string name="analytics.service.header">Оказано услуг</string>
+
+<!--    Фрагмент "Информация о компании"-->
+    <string name="company.header">Информация о компании</string>
+    <string name="company.name">Название компании</string>
+    <string name="company.time">Время работы</string>
+    <string name="company.description">Описание</string>
+
+<!--    Фрагмент "Сотрудники"-->
+    <string name="employee.header">Сотрудники</string>
 </resources>

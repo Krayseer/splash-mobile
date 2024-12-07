@@ -17,7 +17,7 @@ data class Service(
      */
     val duration: Long,
     /**
-     * Цега
+     * Цена
      */
     val price: Int,
 )

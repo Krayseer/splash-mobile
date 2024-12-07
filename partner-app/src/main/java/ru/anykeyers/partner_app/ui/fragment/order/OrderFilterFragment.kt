@@ -67,7 +67,7 @@ class OrderFilterFragment : Fragment() {
     private fun setupSaveButton(binding: FragmentFilterOrdersBinding) {
         binding.saveFilterButton.setOnClickListener {
             val filter = OrderFilter(getSelectedState(binding), getSelectedBox(binding)?.id)
-            vm.saveFilter(filter, parentFragmentManager)
+            vm.applyFilter(filter, parentFragmentManager)
         }
     }
 

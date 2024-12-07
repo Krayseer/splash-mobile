@@ -30,7 +30,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:text="Информация о компании"
+                        android:text="@string/company.header"
                         android:textColor="@android:color/black"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -39,7 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:text="Название компании"
+                        android:text="@string/company.name"
                         android:textSize="14sp" />
 
                     <EditText
@@ -47,7 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_edittext"
-                        android:hint="Название компании"
+                        android:hint="@string/company.name"
                         android:padding="12dp" />
 
                     <TextView
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
                         android:paddingBottom="8dp"
-                        android:text="Время работы"
+                        android:text="@string/company.time"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -70,10 +70,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/rounded_edittext"
-                            android:hint="08:00"
                             android:inputType="time"
                             android:padding="12dp"
-                            android:layout_marginEnd="8dp" /> <!-- Отступ справа -->
+                            android:layout_marginEnd="8dp" />
 
                         <EditText
                             android:id="@+id/close_time"
@@ -81,10 +80,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/rounded_edittext"
-                            android:hint="23:00"
                             android:inputType="time"
                             android:padding="12dp"
-                            android:layout_marginStart="8dp" /> <!-- Отступ слева -->
+                            android:layout_marginStart="8dp" />
                     </LinearLayout>
 
                     <TextView
@@ -92,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
                         android:paddingBottom="8dp"
-                        android:text="Телефон"
+                        android:text="@string/common.phone"
                         android:textSize="14sp" />
 
                     <EditText
@@ -100,7 +98,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_edittext"
-                        android:hint="+7 999 999 99 99"
                         android:inputType="phone"
                         android:padding="12dp" />
 
@@ -109,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
                         android:paddingBottom="8dp"
-                        android:text="Описание"
+                        android:text="@string/company.description"
                         android:textSize="14sp" />
 
                     <EditText
@@ -118,7 +115,7 @@
                         android:layout_height="120dp"
                         android:background="@drawable/rounded_edittext"
                         android:gravity="top"
-                        android:hint="Введите текст"
+                        android:hint="@string/company.description"
                         android:inputType="textMultiLine"
                         android:maxLength="500"
                         android:padding="12dp" />

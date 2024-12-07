@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingBottom="16dp"
-                    android:text="Услуга"
+                    android:text="@string/service.header"
                     android:textColor="@color/black"
                     android:textSize="32sp"
                     android:textStyle="bold" />
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/rounded_edittext"
-                    android:hint="Название"
+                    android:hint="@string/common.name"
                     android:inputType="text"
                     android:padding="12dp" />
 
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/rounded_edittext"
-                    android:hint="Цена (₽)"
+                    android:hint="@string/service.price"
                     android:inputType="numberDecimal"
                     android:padding="12dp" />
 
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/rounded_edittext"
-                    android:hint="Время выполнения (минуты)"
+                    android:hint="@string/service.duration"
                     android:inputType="number"
                     android:padding="12dp" />
 
@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="Удалить" />
+                        android:text="@string/common.delete" />
 
                     <Button
                         android:id="@+id/update_button"

@@ -1,38 +1,45 @@
 package ru.anykeyers.partner_app.ui.vm
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.anykeyers.partner_app.domain.entity.Employee
 import ru.anykeyers.partner_app.domain.entity.Invitation
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 
 /**
- * VM для работы с работниками
+ * ViewModel для работы с работниками
  */
 class EmployeeViewModel(
     private val configurationRepository: IConfigurationRepository
 ) : HandlingViewModel() {
 
-    private var _employees: MutableLiveData<List<Employee>> = MutableLiveData()
+    private val _employees by lazy { MutableLiveData<List<Employee>>() }
 
-    private val _invitations: MutableLiveData<List<Invitation>> = MutableLiveData()
+    private val _invitations by lazy { MutableLiveData<List<Invitation>>() }
 
-    val employees: MutableLiveData<List<Employee>> get() = _employees
+    val employees: LiveData<List<Employee>> get() = _employees
 
-    val invitations: MutableLiveData<List<Invitation>> get() = _invitations
+    val invitations: LiveData<List<Invitation>> get() = _invitations
 
     init {
         loadEmployees()
         loadInvitations()
     }
 
+    /**
+     * Загрузка списка работников
+     */
     private fun loadEmployees() {
-        launchWithResultState  {
+        launchWithResultState {
             _employees.value = configurationRepository.loadEmployees()
         }
     }
 
+    /**
+     * Загрузка списка приглашений
+     */
     private fun loadInvitations() {
-        launchWithResultState  {
+        launchWithResultState {
             _invitations.value = configurationRepository.loadInvitations()
         }
     }

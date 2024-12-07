@@ -5,6 +5,9 @@ import ru.anykeyers.partner_app.domain.entity.statistics.StatisticsResponse
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 import ru.anykeyers.partner_app.domain.repository.IStatisticsRepository
 
+/**
+ * ViewModel для работы со статистикой
+ */
 class StatisticsViewModel(
     private val statisticsRepository: IStatisticsRepository,
     private val configurationRepository: IConfigurationRepository
