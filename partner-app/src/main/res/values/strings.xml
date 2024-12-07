@@ -31,7 +31,7 @@
 <!--    Фрагмент настройки уведомлений-->
     <string name="notification.settings.header">Настройки уведомлений</string>
     <string name="notification.settings.calendar.header">Уведомить о проверке заказов</string>
-    <string name="notification.time.format">HH:mm@</string>
+    <string name="notification.time.format">HH:mm</string>
 
 <!--    Фрагмент "Заказы"-->
     <string name="order.header">Заказы</string>
@@ -72,4 +72,5 @@
 
 <!--    Фрагмент "Сотрудники"-->
     <string name="employee.header">Сотрудники</string>
+
 </resources>

@@ -22,9 +22,9 @@ val presentationModule = module {
     viewModel { OrderViewModel(get(), get(), get(), get(), get()) }
     viewModel { OrderFilterViewModel(get(), get()) }
     viewModel { (orderId: Long) -> OrderDetailsViewModel(orderId, get()) }
-    viewModel { AccountViewModel(get(), androidContext()) }
+    viewModel { AccountViewModel(get()) }
     viewModel { StatisticsViewModel(get(), get()) }
-    viewModel { CompanyViewModel(get()) }
+    viewModel { CompanyViewModel(get(), androidContext()) }
     viewModel { EmployeeViewModel(get()) }
     viewModel { ServiceViewModel(get()) }
 

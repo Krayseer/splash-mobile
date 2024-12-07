@@ -1,9 +1,12 @@
 package ru.anykeyers.partner_app.ui.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.ItemOrderBinding
 import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.utils.DateUtils
@@ -46,7 +49,33 @@ class OrderAdapter(
                 orderStatus.text = order.orderState.localizeName
                 orderTime.text = DateUtils.formatRangeToReadableTime(order.startTime, order.endTime)
                 orderBox.text = order.box.name
-                orderPrice.text = "Итого: ${order.services.sumOf { it.price }} ₽"
+                orderPrice.text = "Итого ${order.services.sumOf { it.price }} ₽"
+
+                when (order.orderState) {
+                    Order.State.PROCESSING -> {
+                        orderStatus.setTextColor(itemView.context.getColor(R.color.white))
+                        orderStatusBlock.setCardBackgroundColor(itemView.context.getColor(R.color.lavender_50))
+                        orderStatusImage.setImageResource(R.drawable.in_process_order)
+                        orderStatusImage.setColorFilter(ContextCompat.getColor(itemView.context, R.color.white), PorterDuff.Mode.SRC_IN)
+                    }
+                    Order.State.WAIT_CONFIRM -> {
+                        orderStatus.setTextColor(itemView.context.getColor(R.color.white))
+                        orderStatusBlock.setCardBackgroundColor(itemView.context.getColor(R.color.lavender_50))
+                        orderStatusImage.setImageResource(R.drawable.wait_process_order)
+                        orderStatusImage.setColorFilter(ContextCompat.getColor(itemView.context, R.color.white), PorterDuff.Mode.SRC_IN)
+                    }
+                    Order.State.WAIT_PROCESS -> {
+                        orderStatus.setTextColor(itemView.context.getColor(R.color.white))
+                        orderStatusBlock.setCardBackgroundColor(itemView.context.getColor(R.color.lavender_50))
+                        orderStatusImage.setImageResource(R.drawable.queue_process_order)
+                        orderStatusImage.setColorFilter(ContextCompat.getColor(itemView.context, R.color.white), PorterDuff.Mode.SRC_IN)
+                    }
+                    Order.State.PROCESSED -> {
+                        orderStatus.setTextColor(itemView.context.getColor(R.color.black))
+                        orderStatusBlock.setCardBackgroundColor(itemView.context.getColor(R.color.green_200))
+                        orderStatusImage.setImageResource(R.drawable.completed_order)
+                    }
+                }
 
                 root.setOnClickListener {
                     onOrderClickListener(order)

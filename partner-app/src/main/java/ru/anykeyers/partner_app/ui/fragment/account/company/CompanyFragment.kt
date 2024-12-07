@@ -42,6 +42,10 @@ class CompanyFragment : Fragment() {
             config = it
         }
 
+        binding.reportButton.setOnClickListener {
+            vm.loadReport()
+        }
+
         binding.submitButton.setOnClickListener {
             val info = OrganizationInfo(
                 config.organizationInfo.tin,

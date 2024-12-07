@@ -66,10 +66,6 @@ class AccountFragment : Fragment() {
                 ?.commit()
         }
 
-        binding.reportButton.setOnClickListener {
-            vm.loadReport()
-        }
-
         parentFragmentManager.setFragmentResultListener("onSave", this) {_, _ ->
             vm.updateUser(user)
             user.userInfo.photoUrl?.let {
