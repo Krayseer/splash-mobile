@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.FragmentOrderDetailsBinding
 import ru.anykeyers.partner_app.domain.entity.Order
+import ru.anykeyers.partner_app.ui.adapter.ServiceAdapterSecondary
+import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
 import ru.anykeyers.partner_app.ui.vm.OrderDetailsViewModel
 import ru.anykeyers.partner_app.utils.DateUtils
 
@@ -35,13 +38,11 @@ class OrderDetailsFragment : Fragment() {
 
         binding.apply {
             orderId.text = "№ ${order.id}"
-            orderUser.text = order.user.username
-            orderStatus.text = order.orderState.localizeName
-            orderTime.text = DateUtils.formatMillisToReadableDate(order.startTime)
-            orderDuration.text = "Время выполнения: ${DateUtils.formatMillisToReadableTime(order.endTime - order.startTime)}"
+            orderUser.text = "${order.user.userInfo.firstName} ${order.user.userInfo.lastName}"
+            summaryPrice.text = "${order.services.sumOf { it.price }} ₽"
+            summaryTime.text = DateUtils.formatMillisToReadableTime(order.services.sumOf { it.duration })
             orderBox.text = order.box.name
-            orderPrice.text = "Цена: ${order.services.sumOf { it.price }} ₽"
-            orderCreationTimestamp.text = "Время создания заказа: ${order.createdAt}"
+            orderTime.text = DateUtils.formatRangeToReadableTime(order.startTime, order.endTime)
 
             vm.isFavorite.observe(viewLifecycleOwner) {
                 if (it) {
@@ -52,6 +53,10 @@ class OrderDetailsFragment : Fragment() {
                     binding.filterIcon.setOnClickListener { vm.addFavorite(order) }
                 }
             }
+
+            serviceRecyclerView.layoutManager = LinearLayoutManager(context)
+            serviceRecyclerView.addItemDecoration(VerticalSpaceItemDecoration())
+            serviceRecyclerView.adapter = ServiceAdapterSecondary(order.services)
         }
 
         return binding.root

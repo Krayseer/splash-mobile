@@ -38,6 +38,7 @@
     <string name="order.filter.state">Статус заказа</string>
     <string name="order.filter.box">Бокс</string>
     <string name="order.details.favorite_icon_content">Кнопка "Избранное"</string>
+    <string name="order.details.service.header">Услуги</string>
 
 <!--    Фрагмент "Главная страница"-->
     <string name="home.header">Добро пожаловать в Сплэш Партнер!</string>

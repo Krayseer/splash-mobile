@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.adapter.ServiceAdapter
 import ru.anykeyers.partner_app.databinding.FragmentServiceBinding
