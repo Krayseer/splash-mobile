@@ -50,8 +50,8 @@ class ServiceTableAdapter(
         }
 
         val nameTextView = createTextView("Итого", grav = Gravity.START, tface = Typeface.BOLD)
-        val countTextView = createTextView(summaryStatistics.summaryCount.toString(), tface = Typeface.BOLD)
-        val sumTextView = createTextView(summaryStatistics.summaryPrice.toString(), tface = Typeface.BOLD)
+        val countTextView = createTextView(summaryStatistics.summaryCount.toString(), grav = Gravity.END, tface = Typeface.BOLD)
+        val sumTextView = createTextView(summaryStatistics.summaryPrice.toString(), grav = Gravity.END, tface = Typeface.BOLD)
 
         summaryRow.addView(nameTextView)
         summaryRow.addView(countTextView)
@@ -67,8 +67,8 @@ class ServiceTableAdapter(
             }
 
             val nameTextView = createTextView(item.name, grav = Gravity.START)
-            val countTextView = createTextView(item.count.toString())
-            val sumTextView = createTextView(item.sum.toString())
+            val countTextView = createTextView(item.count.toString(), grav = Gravity.END)
+            val sumTextView = createTextView(item.sum.toString(), grav = Gravity.END)
 
             tableRow.addView(nameTextView)
             tableRow.addView(countTextView)
@@ -85,7 +85,7 @@ class ServiceTableAdapter(
         return TextView(context).apply {
             this.text = text
             gravity = grav
-            setPadding(16, 16, 16, 16)
+            setPadding(16, 24, 16, 24)
             if (isHeader) {
                 setTypeface(null, Typeface.BOLD)
                 setTextColor(Color.BLACK)
