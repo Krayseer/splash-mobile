@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.databinding.FragmentEmployeeBinding
-import ru.anykeyers.partner_app.ui.adapter.EmployeeTableAdapter
+import ru.anykeyers.partner_app.ui.adapter.EmployeeAdapter
+import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
 import ru.anykeyers.partner_app.ui.vm.EmployeeViewModel
 
 /**
@@ -23,12 +25,15 @@ class EmployeeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentEmployeeBinding.inflate(inflater, container, false)
-
-        val employeeTableAdapter = EmployeeTableAdapter(requireContext())
+        val adapter = EmployeeAdapter()
 
         vm.employees.observe(viewLifecycleOwner) {
-            employeeTableAdapter.fillTable(binding.tableLayout, it)
+            adapter.updateData(it)
         }
+
+        binding.employeeRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.employeeRecyclerView.addItemDecoration(VerticalSpaceItemDecoration())
+        binding.employeeRecyclerView.adapter = adapter
 
         return binding.root
     }

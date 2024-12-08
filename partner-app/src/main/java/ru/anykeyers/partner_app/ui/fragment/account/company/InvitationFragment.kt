@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.anykeyers.partner_app.databinding.FragmentInvitationBinding
-import ru.anykeyers.partner_app.ui.adapter.InvitationTableAdapter
+import ru.anykeyers.partner_app.ui.adapter.InvitationAdapter
+import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
 import ru.anykeyers.partner_app.ui.vm.EmployeeViewModel
 
 /**
@@ -23,11 +25,15 @@ class InvitationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentInvitationBinding.inflate(inflater, container, false)
-        val adapter = InvitationTableAdapter(requireContext())
+        val adapter = InvitationAdapter()
 
         vm.invitations.observe(viewLifecycleOwner) {
-            adapter.fillTable(binding.tableLayout, it)
+            adapter.updateData(it)
         }
+
+        binding.invitationRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.invitationRecyclerView.addItemDecoration(VerticalSpaceItemDecoration())
+        binding.invitationRecyclerView.adapter = adapter
 
         return binding.root
     }
