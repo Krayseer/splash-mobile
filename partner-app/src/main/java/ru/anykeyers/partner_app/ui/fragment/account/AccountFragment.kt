@@ -13,6 +13,7 @@ import ru.anykeyers.partner_app.databinding.FragmentAccountBinding
 import ru.anykeyers.partner_app.domain.entity.User
 import ru.anykeyers.partner_app.ui.fragment.account.company.CompanyFragment
 import ru.anykeyers.partner_app.ui.fragment.account.company.EmployeeManagementFragment
+import ru.anykeyers.partner_app.ui.fragment.account.notification.NotificationFragment
 import ru.anykeyers.partner_app.ui.fragment.account.notification.NotificationSettingsFragment
 import ru.anykeyers.partner_app.ui.vm.AccountViewModel
 
@@ -41,6 +42,13 @@ class AccountFragment : Fragment() {
         binding.editProfileTextView.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.fragment_container, AccountEditFragment(user))
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+
+        binding.myNotificationsTextView.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, NotificationFragment())
                 ?.addToBackStack(null)
                 ?.commit()
         }

@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.anykeyers.partner_app.data.remote.WebConstant
 import ru.anykeyers.partner_app.data.remote.ConfigurationAPI
+import ru.anykeyers.partner_app.data.remote.NotificationAPI
 import ru.anykeyers.partner_app.data.remote.OrderAPI
 import ru.anykeyers.partner_app.data.remote.ServiceAPI
 import ru.anykeyers.partner_app.data.remote.StatisticsAPI
@@ -33,11 +34,13 @@ val networkModule = module {
             .build()
     }
 
+    single { get<Retrofit>(qualifier = named(ProviderName.KEYCLOAK_PROVIDER)).create(AuthService::class.java) }
+
     single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(UserAPI::class.java) }
     single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(OrderAPI::class.java) }
     single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(ServiceAPI::class.java) }
-    single { get<Retrofit>(qualifier = named(ProviderName.KEYCLOAK_PROVIDER)).create(AuthService::class.java) }
     single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(StatisticsAPI::class.java) }
+    single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(NotificationAPI::class.java) }
     single { get<Retrofit>(qualifier = named(ProviderName.BACKEND_PROVIDER)).create(ConfigurationAPI::class.java) }
 
     single<TokenProvider> { tokenProvider }

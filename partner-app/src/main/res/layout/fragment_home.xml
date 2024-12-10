@@ -210,8 +210,7 @@
                                     android:id="@+id/inProcessCount"
                                     android:layout_width="wrap_content"
                                     android:textColor="@color/black"
-                                    android:layout_height="wrap_content"
-                                    android:text="1"/>
+                                    android:layout_height="wrap_content"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -254,8 +253,7 @@
                                     android:id="@+id/inQueueCount"
                                     android:layout_width="wrap_content"
                                     android:textColor="@color/black"
-                                    android:layout_height="wrap_content"
-                                    android:text="4"/>
+                                    android:layout_height="wrap_content"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -298,8 +296,7 @@
                                     android:id="@+id/processingCount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/black"
-                                    android:text="1"/>
+                                    android:textColor="@color/black"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -342,8 +339,7 @@
                                     android:id="@+id/completedCount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/black"
-                                    android:text="8"/>
+                                    android:textColor="@color/black"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>

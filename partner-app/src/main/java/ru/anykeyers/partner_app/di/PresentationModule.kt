@@ -7,6 +7,8 @@ import ru.anykeyers.partner_app.ui.vm.AccountViewModel
 import ru.anykeyers.partner_app.ui.vm.CompanyViewModel
 import ru.anykeyers.partner_app.ui.vm.ConfigurationViewModel
 import ru.anykeyers.partner_app.ui.vm.EmployeeViewModel
+import ru.anykeyers.partner_app.ui.vm.HomeViewModel
+import ru.anykeyers.partner_app.ui.vm.NotificationViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderDetailsViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderFilterViewModel
 import ru.anykeyers.partner_app.ui.vm.OrderViewModel
@@ -27,5 +29,7 @@ val presentationModule = module {
     viewModel { CompanyViewModel(get(), androidContext()) }
     viewModel { EmployeeViewModel(get()) }
     viewModel { ServiceViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
+    viewModel { NotificationViewModel(get()) }
 
 }

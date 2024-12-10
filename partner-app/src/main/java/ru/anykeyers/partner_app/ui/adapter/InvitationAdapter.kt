@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.databinding.ItemInvitationBinding
 import ru.anykeyers.partner_app.domain.entity.Invitation
-import ru.anykeyers.partner_app.domain.entity.Role
 
 /**
  * Адаптер списка сотрудников

@@ -40,4 +40,9 @@ object WebConstant {
      */
     const val USER_SERVICE_URL: String = "${BASE_URL}user"
 
+    /**
+     * URL сервиса уведомлений
+     */
+    const val NOTIFICATION_URL: String = "${BASE_URL}notification"
+
 }

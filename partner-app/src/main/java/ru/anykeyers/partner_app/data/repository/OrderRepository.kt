@@ -19,4 +19,10 @@ class OrderRepository(
         }
     }
 
+    override suspend fun loadOrdersCount(id: Long): Map<Order.State, Long> {
+        return withContext(Dispatchers.IO) {
+            orderAPI.getCarWashCountOrders(id)
+        }
+    }
+
 }

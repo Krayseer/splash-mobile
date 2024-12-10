@@ -7,6 +7,7 @@ import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Employee
 import ru.anykeyers.partner_app.domain.entity.Invitation
+import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.domain.entity.dto.ConfigurationUpdateRequest
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 

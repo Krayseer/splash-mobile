@@ -12,6 +12,7 @@ import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.fragment.AnalyticsFragment
 import ru.anykeyers.partner_app.ui.fragment.account.AccountFragment
 import ru.anykeyers.partner_app.ui.fragment.HomeFragment
+import ru.anykeyers.partner_app.ui.fragment.account.notification.NotificationFragment
 import ru.anykeyers.partner_app.ui.fragment.order.OrderFragment
 import ru.anykeyers.partner_app.ui.fragment.configuration.ConfigurationFragment
 
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_notifications -> {
-                Toast.makeText(this, "Уведомления", Toast.LENGTH_SHORT).show()
+                loadFragment(NotificationFragment())
                 return true
             }
             R.id.action_login -> {
