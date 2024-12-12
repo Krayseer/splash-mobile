@@ -15,32 +15,36 @@ data class User (
     /**
      * Данные пользователя
      */
-    val userInfo: Info
+    val userInfo: Info,
+    /**
+     * Роли пользователя
+     */
+    val roles: List<Role>
 ) {
     data class Info (
         /**
          * Имя
          */
-        val firstName: String,
+        var firstName: String,
         /**
          * Фамилия
          */
-        val lastName: String,
+        var lastName: String,
         /**
          * Почта
          */
-        val email: String,
+        var email: String,
         /**
          * Телефонный номер
          */
-        val phoneNumber: String,
+        var phoneNumber: String,
         /**
          * URL фотографии
          */
-        val photoUrl: String,
+        var photoUrl: String?,
         /**
          * Список ролей
          */
-        val roles: List<String>
+        var roles: List<String>
     )
 }

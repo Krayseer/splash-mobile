@@ -2,6 +2,7 @@
 agp = "8.6.1"
 datastorePreferences = "1.1.1"
 lifecycleLivedataKtx = "2.8.7"
+mpandroidchart = "v3.1.0"
 roomTesting = "2.6.1"
 runner = "1.6.2"
 espressoCoreVersion = "3.6.1"
@@ -9,8 +10,8 @@ coreKtxVersion = "1.15.0"
 appcompatVersion = "1.7.0"
 material = "1.12.0"
 gridlayout = "1.0.0"
-koin = "3.5.3"
-retrofit = "2.9.0"
+koin = "4.0.0"
+retrofit = "2.11.0"
 okhttp3LogInterceptor = "4.9.3"
 coroutines = "1.8.1"
 coroutinesAndroid = "1.8.1"
@@ -30,6 +31,7 @@ androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "
 datastore = { module = "androidx.datastore:datastore", version.ref = "datastorePreferences" }
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCoreVersion" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }

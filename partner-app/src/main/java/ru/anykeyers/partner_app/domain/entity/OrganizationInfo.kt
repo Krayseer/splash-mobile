@@ -11,7 +11,7 @@ data class OrganizationInfo(
     /**
      * Тип организации
      */
-    val typeOrganization: String,
+    val type: String,
     /**
      * Почта
      */

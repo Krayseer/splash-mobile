@@ -12,7 +12,7 @@ import kotlin.time.toDuration
 object DateUtils {
 
     @SuppressLint("SimpleDateFormat")
-    private val fullFormat = SimpleDateFormat("dd.MM.yyyy HH:mm")
+    private val fullFormat = SimpleDateFormat("HH:mm dd.MM.yyyy")
     @SuppressLint("SimpleDateFormat")
     private val dateTimeFormat = SimpleDateFormat("HH:mm")
     @SuppressLint("SimpleDateFormat")
@@ -25,6 +25,19 @@ object DateUtils {
         val date = Date(millis)
         return fullFormat.format(date)
     }
+
+    /**
+     * Преобразовать строку формата ISO-8601 в формат "часы:минуты день.месяц.год"
+     */
+    fun formatIsoToReadableDate(isoDate: String): String {
+        @SuppressLint("SimpleDateFormat")
+        val isoFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'")
+        isoFormat.timeZone = java.util.TimeZone.getTimeZone("UTC")
+
+        val date = isoFormat.parse(isoDate)
+        return if (date != null) fullFormat.format(date) else ""
+    }
+
 
     /**
      * Отформатировать время в миллисекундах в человеко-читаемый формат

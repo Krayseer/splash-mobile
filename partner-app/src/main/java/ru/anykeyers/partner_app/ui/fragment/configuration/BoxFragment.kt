@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import ru.anykeyers.partner_app.R
 import ru.anykeyers.partner_app.ui.adapter.BoxAdapter
 import ru.anykeyers.partner_app.databinding.FragmentBoxBinding
 import ru.anykeyers.partner_app.domain.entity.Configuration
@@ -27,13 +28,26 @@ class BoxFragment(
     ): View {
         val binding = FragmentBoxBinding.inflate(inflater, container, false)
 
-        boxAdapter = BoxAdapter()
+        boxAdapter = BoxAdapter { box ->
+            val fragment = BoxCreateFragment(false, box)
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, fragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
 
         configuration.observe(viewLifecycleOwner) {
             boxAdapter.updateData(configuration.value?.boxes!!)
         }
 
         binding.apply {
+            addButton.setOnClickListener {
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.fragment_container, BoxCreateFragment(true))
+                    ?.addToBackStack(null)
+                    ?.commit()
+            }
+
             boxesRecyclerView.layoutManager = LinearLayoutManager(context)
             boxesRecyclerView.addItemDecoration(VerticalSpaceItemDecoration())
             boxesRecyclerView.adapter = boxAdapter

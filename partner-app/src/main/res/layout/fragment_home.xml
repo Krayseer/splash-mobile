@@ -28,7 +28,7 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Добро пожаловать в Сплэш Партнер!"
+                    android:text="@string/home.header"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -41,7 +41,7 @@
                     android:id="@+id/subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Заполните информацию о компании"
+                    android:text="@string/home.organization_info.header"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
@@ -68,13 +68,15 @@
                         android:layout_marginBottom="8dp">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"/>
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/circle_dot"
+                            android:layout_gravity="center" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Укажите реквизиты"
+                            android:text="@string/home.organization_info.provide_details"
                             android:layout_marginStart="8dp"
                             android:textColor="@android:color/black" />
                     </LinearLayout>
@@ -86,13 +88,15 @@
                         android:layout_marginBottom="8dp">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp" />
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/circle_dot"
+                            android:layout_gravity="center" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Дождитесь проверки"
+                            android:text="@string/home.organization_info.wait_verification"
                             android:layout_marginStart="8dp"
                             android:textColor="@android:color/black" />
                     </LinearLayout>
@@ -103,13 +107,15 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp" />
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/circle_dot"
+                            android:layout_gravity="center" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Загрузите услуги"
+                            android:text="@string/home.organization_info.load_services"
                             android:layout_marginStart="8dp"
                             android:textColor="@android:color/black" />
                     </LinearLayout>
@@ -119,7 +125,7 @@
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Заполните реквизиты и загрузите документы для подтверждения вашего аккаунта. После проверки вам на почту придет письмо об активации аккаунта."
+                    android:text="@string/home.organization_info.result"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
@@ -131,7 +137,7 @@
                 <Button
                     android:id="@+id/submit_button"
                     style="@style/PrimaryButton"
-                    android:text="Перейти к заполнению"
+                    android:text="@string/home.organization_info.go_filling"
                     android:layout_marginTop="16dp"
                     app:layout_constraintTop_toBottomOf="@id/description"
                     app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +157,7 @@
                     android:id="@+id/orders_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Заказы"
+                    android:text="@string/home.order.header"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -190,20 +196,21 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/in_process_order"
-                                    android:contentDescription="На выполнении" />
+                                    android:contentDescription="@string/home.order.running" />
 
                                 <TextView
                                     android:id="@+id/inProcess"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="На выполнении"
+                                    android:textColor="@color/black"
+                                    android:text="@string/home.order.running"
                                     android:textSize="14sp"/>
 
                                 <TextView
                                     android:id="@+id/inProcessCount"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="1"/>
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -232,20 +239,21 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/queue_process_order"
-                                    android:contentDescription="В очереди"/>
+                                    android:contentDescription="@string/home.order.wait_process"/>
 
                                 <TextView
                                     android:id="@+id/inQueue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="В очереди"
+                                    android:textColor="@color/black"
+                                    android:text="@string/home.order.wait_process"
                                     android:textSize="14sp"/>
 
                                 <TextView
                                     android:id="@+id/inQueueCount"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="4"/>
+                                    android:textColor="@color/black"
+                                    android:layout_height="wrap_content"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -274,20 +282,21 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/wait_process_order"
-                                    android:contentDescription="В обработке" />
+                                    android:contentDescription="@string/home.order.processing" />
 
                                 <TextView
                                     android:id="@+id/processing"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="В обработке"
+                                    android:textColor="@color/black"
+                                    android:text="@string/home.order.processing"
                                     android:textSize="14sp"/>
 
                                 <TextView
                                     android:id="@+id/processingCount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="1"/>
+                                    android:textColor="@color/black"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -316,21 +325,21 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/completed_order"
-                                    android:contentDescription="Выполнены"
-                                    />
+                                    android:contentDescription="@string/home.order.processed" />
 
                                 <TextView
                                     android:id="@+id/completed"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Выполнены"
+                                    android:textColor="@color/black"
+                                    android:text="@string/home.order.processed"
                                     android:textSize="14sp"/>
 
                                 <TextView
                                     android:id="@+id/completedCount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="8"/>
+                                    android:textColor="@color/black"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>

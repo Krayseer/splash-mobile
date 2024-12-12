@@ -9,6 +9,9 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.firstOrNull
 import ru.anykeyers.partner_app.domain.entity.OrderFilter
 
+/**
+ * Хранилище фильтров
+ */
 class OrderFilterDataStore(
     val context: Context
 ) {
@@ -26,12 +29,18 @@ class OrderFilterDataStore(
         return gson.fromJson(json, object : TypeToken<OrderFilter>() {}.type)
     }
 
+    /**
+     * Сохранить фильтр
+     */
     suspend fun saveOrderFilter(orderFilter: OrderFilter) {
         context.dataStore.edit { preferences ->
             preferences[PreferencesKeys.ORDER_FILTER] = gson.toJson(orderFilter)
         }
     }
 
+    /**
+     * Ключи для Preferences
+     */
     private object PreferencesKeys {
         val ORDER_FILTER = stringPreferencesKey("order_filter")
     }

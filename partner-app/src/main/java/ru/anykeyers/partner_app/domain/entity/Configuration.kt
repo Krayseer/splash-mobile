@@ -37,6 +37,10 @@ data class Configuration (
      */
     val closeTime: String,
     /**
+     * Адрес
+     */
+    val address: Address,
+    /**
      * Тип обработки заказов
      */
     val orderProcessMode: String,

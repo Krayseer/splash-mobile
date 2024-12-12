@@ -16,6 +16,9 @@ import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.domain.entity.OrderFilter
 import ru.anykeyers.partner_app.ui.vm.OrderFilterViewModel
 
+/**
+ * Фрагмент "Фильтр заказов"
+ */
 class OrderFilterFragment : Fragment() {
 
     private val vm: OrderFilterViewModel by viewModel()
@@ -64,7 +67,7 @@ class OrderFilterFragment : Fragment() {
     private fun setupSaveButton(binding: FragmentFilterOrdersBinding) {
         binding.saveFilterButton.setOnClickListener {
             val filter = OrderFilter(getSelectedState(binding), getSelectedBox(binding)?.id)
-            vm.saveFilter(filter, parentFragmentManager)
+            vm.applyFilter(filter, parentFragmentManager)
         }
     }
 

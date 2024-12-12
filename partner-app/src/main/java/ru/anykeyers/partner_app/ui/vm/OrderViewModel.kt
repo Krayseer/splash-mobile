@@ -1,17 +1,18 @@
 package ru.anykeyers.partner_app.ui.vm
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.anykeyers.partner_app.data.context.FilterContext
 import ru.anykeyers.partner_app.data.store.FavoriteOrderDao
 import ru.anykeyers.partner_app.data.store.OrderFilterDataStore
 import ru.anykeyers.partner_app.data.mapper.FavoriteOrderMapper.toDomain
-import ru.anykeyers.partner_app.domain.entity.Configuration
 import ru.anykeyers.partner_app.domain.entity.Order
+import ru.anykeyers.partner_app.domain.entity.OrderFilter
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 import ru.anykeyers.partner_app.domain.repository.IOrderRepository
 
 /**
- * VM для фрагмента заказов
+ * ViewModel для управления заказами
  */
 class OrderViewModel(
     private val orderRepository: IOrderRepository,
@@ -19,25 +20,33 @@ class OrderViewModel(
     private val filterDataStore: OrderFilterDataStore,
     private val filterContext: FilterContext,
     private val favoriteOrderDao: FavoriteOrderDao
-): HandlingViewModel() {
+) : HandlingViewModel() {
 
-    private var _orders: MutableLiveData<List<Order>> = MutableLiveData()
+    private val _orders by lazy { MutableLiveData<List<Order>>() }
+    val orders: LiveData<List<Order>> get() = _orders
 
-    private var _hasFilter: MutableLiveData<Boolean> = MutableLiveData()
+    private val _hasFilter by lazy { MutableLiveData<Boolean>() }
+    val hasFilter: LiveData<Boolean> get() = _hasFilter
 
-    private var _isFavorite: MutableLiveData<Boolean> = MutableLiveData(false)
-
-    val orders: MutableLiveData<List<Order>> get() = _orders
-
-    val hasFilter: MutableLiveData<Boolean> get() = _hasFilter
-
-    val isFavorite: MutableLiveData<Boolean> get() = _isFavorite
+    private val _isFavorite by lazy { MutableLiveData(false) }
+    val isFavorite: LiveData<Boolean> get() = _isFavorite
 
     init {
-        notifyChange()
+        reloadOrders()
     }
 
-    fun notifyChange() {
+    /**
+     * Переключает состояние избранного и перезагружает заказы
+     */
+    fun toggleFavorite() {
+        _isFavorite.value = _isFavorite.value?.not()
+        reloadOrders()
+    }
+
+    /**
+     * Перезагружает список заказов и состояние фильтра
+     */
+    fun reloadOrders() {
         if (_isFavorite.value == true) {
             loadFavorites()
         } else {
@@ -46,28 +55,22 @@ class OrderViewModel(
         loadFilterState()
     }
 
-    fun updateFavorite() {
-        _isFavorite.value = _isFavorite.value?.not()
-        notifyChange()
-    }
-
-
     private fun loadOrders() {
         launchWithResultState {
             try {
-                val configuration: Configuration = configurationRepository.loadConfiguration()
+                val configuration = configurationRepository.loadConfiguration()
                 val orders = orderRepository.loadCarWashOrders(configuration.id)
                 applyFilterIfExists(orders)
             } catch (e: Exception) {
-                applyFilterIfExists(listOf())
+                _orders.value = emptyList()
             }
         }
     }
 
     private fun loadFavorites() {
         launchWithResultState {
-            val orders = favoriteOrderDao.getAllFavorites().map { it.toDomain()}
-            applyFilterIfExists(orders)
+            val favoriteOrders = favoriteOrderDao.getAllFavorites().map { it.toDomain() }
+            applyFilterIfExists(favoriteOrders)
         }
     }
 
@@ -78,14 +81,17 @@ class OrderViewModel(
     }
 
     private suspend fun applyFilterIfExists(orders: List<Order>) {
-        filterDataStore.getOrderFilter()?.let { filter ->
-            val filteredOrders = orders.filter { order ->
-                (filter.selectedOrderState == null || order.orderState == filter.selectedOrderState) &&
-                        (filter.selectedBoxId == null || order.box.id == filter.selectedBoxId)
-            }
-            _orders.value = filteredOrders
-        } ?: run {
-            _orders.value = orders
+        val filter = filterDataStore.getOrderFilter()
+        _orders.value = filter?.let { applyFilter(orders, it) } ?: orders
+    }
+
+    /**
+     * Применяет фильтр к списку заказов
+     */
+    private fun applyFilter(orders: List<Order>, filter: OrderFilter): List<Order> {
+        return orders.filter { order ->
+            (filter.selectedOrderState == null || order.orderState == filter.selectedOrderState) &&
+                    (filter.selectedBoxId == null || order.box.id == filter.selectedBoxId)
         }
     }
 

@@ -4,10 +4,16 @@ import ru.anykeyers.partner_app.data.converter.FavoriteOrderConverter
 import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.domain.entity.OrderEntity
 
+/**
+ * Маппер избранных заказов
+ */
 object FavoriteOrderMapper {
 
     private val converter: FavoriteOrderConverter = FavoriteOrderConverter()
 
+    /**
+     * Конвертировать заказ в сущность
+     */
     fun Order.toEntity(): OrderEntity {
         return OrderEntity(
             id = this.id,
@@ -24,6 +30,9 @@ object FavoriteOrderMapper {
         )
     }
 
+    /**
+     * Конвертировать сущность в доменную модель
+     */
     fun OrderEntity.toDomain(): Order {
         return Order(
             id = this.id,

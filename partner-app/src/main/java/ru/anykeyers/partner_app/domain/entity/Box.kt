@@ -11,5 +11,5 @@ data class Box (
     /**
      * Название
      */
-    val name: String
+    var name: String
 )

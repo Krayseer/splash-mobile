@@ -6,6 +6,9 @@ import ru.anykeyers.partner_app.data.remote.OrderAPI
 import ru.anykeyers.partner_app.domain.entity.Order
 import ru.anykeyers.partner_app.domain.repository.IOrderRepository
 
+/**
+ * Реализация сервиса работы с заказами
+ */
 class OrderRepository(
     private val orderAPI: OrderAPI
 ): IOrderRepository {
@@ -13,6 +16,12 @@ class OrderRepository(
     override suspend fun loadCarWashOrders(carWashId: Long): List<Order> {
         return withContext(Dispatchers.IO) {
             orderAPI.getCarWashOrders(carWashId)
+        }
+    }
+
+    override suspend fun loadOrdersCount(id: Long): Map<Order.State, Long> {
+        return withContext(Dispatchers.IO) {
+            orderAPI.getCarWashCountOrders(id)
         }
     }
 

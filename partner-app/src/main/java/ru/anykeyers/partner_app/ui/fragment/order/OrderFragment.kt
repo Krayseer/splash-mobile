@@ -13,6 +13,9 @@ import ru.anykeyers.partner_app.databinding.FragmentOrdersBinding
 import ru.anykeyers.partner_app.ui.decorator.VerticalSpaceItemDecoration
 import ru.anykeyers.partner_app.ui.vm.OrderViewModel
 
+/**
+ * Фрагмент "Заказы"
+ */
 class OrderFragment: Fragment() {
 
     private lateinit var orderAdapter: OrderAdapter
@@ -76,7 +79,7 @@ class OrderFragment: Fragment() {
         }
 
         parentFragmentManager.setFragmentResultListener("filterApplied", this) { _, _ ->
-            vm.notifyChange()
+            vm.reloadOrders()
         }
     }
 
@@ -91,7 +94,7 @@ class OrderFragment: Fragment() {
             }
 
         }
-        binding.favoriteIcon.setOnClickListener { vm.updateFavorite() }
+        binding.favoriteIcon.setOnClickListener { vm.toggleFavorite() }
     }
 
 }

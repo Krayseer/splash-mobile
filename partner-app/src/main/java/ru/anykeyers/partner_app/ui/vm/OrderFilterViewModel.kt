@@ -2,48 +2,60 @@ package ru.anykeyers.partner_app.ui.vm
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.anykeyers.partner_app.data.store.OrderFilterDataStore
 import ru.anykeyers.partner_app.domain.entity.Box
 import ru.anykeyers.partner_app.domain.entity.OrderFilter
 import ru.anykeyers.partner_app.domain.repository.IConfigurationRepository
 
+/**
+ * ViewModel для управления фильтром заказов
+ */
 class OrderFilterViewModel(
     private val configurationRepository: IConfigurationRepository,
     private val filterDataStore: OrderFilterDataStore
-): HandlingViewModel() {
+) : HandlingViewModel() {
 
-    private var _boxes: MutableLiveData<List<Box>> = MutableLiveData()
+    private val _boxes by lazy { MutableLiveData<List<Box>>() }
 
-    private var _filter: MutableLiveData<OrderFilter> = MutableLiveData()
+    private val _filter by lazy { MutableLiveData<OrderFilter>() }
 
-    val boxes: MutableLiveData<List<Box>> get() = _boxes
+    val boxes: LiveData<List<Box>> get() = _boxes
 
-    val filter: MutableLiveData<OrderFilter> get() = _filter
+    val filter: LiveData<OrderFilter> get() = _filter
 
     init {
-        loadBoxes()
-        loadFilter()
+        fetchBoxes()
+        fetchFilter()
     }
 
-    fun saveFilter(filter: OrderFilter, parentFragmentManager: FragmentManager) {
+    /**
+     * Сохраняет фильтр и возвращает результат во фрагменте
+     */
+    fun applyFilter(filter: OrderFilter, fragmentManager: FragmentManager) {
         launchWithResultState {
             filterDataStore.saveOrderFilter(filter)
-            parentFragmentManager.setFragmentResult("filterApplied", Bundle.EMPTY)
-            parentFragmentManager.popBackStack()
+            fragmentManager.setFragmentResult("filterApplied", Bundle.EMPTY)
+            fragmentManager.popBackStack()
         }
     }
 
-    private fun loadFilter() {
+    /**
+     * Загружает текущий фильтр из хранилища
+     */
+    private fun fetchFilter() {
         launchWithResultState {
             _filter.value = filterDataStore.getOrderFilter()
         }
     }
 
-    private fun loadBoxes() {
+    /**
+     * Загружает список боксов из репозитория
+     */
+    private fun fetchBoxes() {
         launchWithResultState {
             _boxes.value = configurationRepository.loadConfiguration().boxes
         }
     }
-
 }

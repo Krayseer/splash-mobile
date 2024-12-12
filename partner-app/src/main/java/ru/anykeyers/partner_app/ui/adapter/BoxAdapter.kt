@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.anykeyers.partner_app.databinding.ItemBoxBinding
 import ru.anykeyers.partner_app.domain.entity.Box
 
+/**
+ * Адаптер списка боксов
+ */
 class BoxAdapter(
-    private var boxList: List<Box> = mutableListOf()
+    private var boxList: List<Box> = mutableListOf(),
+    private val onClickBox: (Box) -> Unit
 ) : RecyclerView.Adapter<BoxAdapter.BoxViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoxViewHolder {
@@ -17,7 +21,7 @@ class BoxAdapter(
 
     override fun onBindViewHolder(holder: BoxViewHolder, position: Int) {
         val box: Box = boxList[position]
-        holder.bind(box)
+        holder.bind(box, onClickBox)
     }
 
     override fun getItemCount(): Int {
@@ -33,9 +37,12 @@ class BoxAdapter(
         private val binding: ItemBoxBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(box: Box) {
+        fun bind(box: Box, onClickBox: (Box) -> Unit) {
             binding.apply {
                 boxTitle.text = box.name
+                root.setOnClickListener {
+                    onClickBox(box)
+                }
             }
         }
 

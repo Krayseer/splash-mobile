@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 /**
  * Базовый класс для моделей представления, которые подразумевают в себе вызовы сторонних API для
- * получения результата.
+ * получения результата
  */
 open class HandlingViewModel: ViewModel() {
 
@@ -28,8 +28,11 @@ open class HandlingViewModel: ViewModel() {
         return resultState
     }
 
+    /**
+     * Результат выполнения запроса
+     */
     sealed class ResultState<out T> {
-        object Loading : ResultState<Nothing>()
+        data object Loading : ResultState<Nothing>()
         data class Success<out T>(val data: T) : ResultState<T>()
         data class Error(val message: String) : ResultState<Nothing>()
     }

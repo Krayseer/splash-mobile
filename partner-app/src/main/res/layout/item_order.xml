@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="@color/blue_50">
 
         <LinearLayout
@@ -26,8 +26,8 @@
                 <androidx.cardview.widget.CardView
                     style="@style/InfoCard"
                     android:layout_width="wrap_content"
-                    app:cardCornerRadius="10dp"
                     android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp"
                     app:cardBackgroundColor="@color/blue_400"
                     android:textAlignment="center">
 
@@ -71,11 +71,22 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp">
 
+                    <ImageView
+                        android:id="@+id/order_status_image"
+                        android:layout_width="20dp"
+                        android:layout_gravity="center"
+                        android:layout_height="20dp"
+                        android:src="@drawable/in_process_order"
+                        android:contentDescription="@string/home.order.running" />
+
                     <TextView
                         android:id="@+id/order_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:layout_marginStart="6dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:text="В обработке"
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
