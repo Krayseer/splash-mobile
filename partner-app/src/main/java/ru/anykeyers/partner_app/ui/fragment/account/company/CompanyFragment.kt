@@ -62,7 +62,7 @@ class CompanyFragment : Fragment() {
                     binding.closeTime.text.toString(),
                     config.orderProcessMode,
                     emptyList(),
-                    config.address,
+                    Gson().toJson(config.address),
                     null
                 )
             )

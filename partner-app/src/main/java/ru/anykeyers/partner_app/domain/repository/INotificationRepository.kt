@@ -12,4 +12,9 @@ interface INotificationRepository {
      */
     suspend fun loadNotifications(): List<Notification>
 
+    /**
+     * Удалить уведомление
+     */
+    suspend fun deleteNotification(notification: Notification)
+
 }

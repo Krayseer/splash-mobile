@@ -26,7 +26,9 @@ class NotificationFragment : Fragment() {
     ): View {
         val binding = FragmentNotificationBinding.inflate(inflater, container, false)
 
-        val adapter = NotificationAdapter()
+        val adapter = NotificationAdapter { notification ->
+            vm.deleteNotification(notification)
+        }
         vm.notifications.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }

@@ -39,7 +39,7 @@ data class Configuration (
     /**
      * Адрес
      */
-    val address: String,
+    val address: Address,
     /**
      * Тип обработки заказов
      */

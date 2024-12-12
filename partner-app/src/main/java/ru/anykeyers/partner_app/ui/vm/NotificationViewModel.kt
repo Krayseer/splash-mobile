@@ -26,4 +26,14 @@ class NotificationViewModel(
         }
     }
 
+    /**
+     * Удалить уведомление
+     */
+    fun deleteNotification(notification: Notification) {
+        launchWithResultState {
+            notificationRepository.deleteNotification(notification)
+            loadNotifications()
+        }
+    }
+
 }

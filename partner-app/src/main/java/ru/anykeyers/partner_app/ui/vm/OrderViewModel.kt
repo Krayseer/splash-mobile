@@ -46,7 +46,7 @@ class OrderViewModel(
     /**
      * Перезагружает список заказов и состояние фильтра
      */
-    private fun reloadOrders() {
+    fun reloadOrders() {
         if (_isFavorite.value == true) {
             loadFavorites()
         } else {

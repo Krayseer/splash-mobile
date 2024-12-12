@@ -79,7 +79,7 @@ class OrderFragment: Fragment() {
         }
 
         parentFragmentManager.setFragmentResultListener("filterApplied", this) { _, _ ->
-            vm.toggleFavorite()
+            vm.reloadOrders()
         }
     }
 

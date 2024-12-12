@@ -16,4 +16,10 @@ class NotificationRepository(
         }
     }
 
+    override suspend fun deleteNotification(notification: Notification) {
+        return withContext(Dispatchers.IO) {
+            notificationAPI.deleteNotification(notification.id)
+        }
+    }
+
 }
