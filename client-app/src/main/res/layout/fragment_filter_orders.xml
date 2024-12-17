@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/filter_min_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Минимальная цена"
+        android:inputType="number"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/filter_is_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Только завершенные"
+        app:layout_constraintTop_toBottomOf="@id/filter_min_price"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/filter_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Адрес"
+        app:layout_constraintTop_toBottomOf="@id/filter_is_done"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/apply_filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Готово"
+        app:layout_constraintTop_toBottomOf="@id/filter_address"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

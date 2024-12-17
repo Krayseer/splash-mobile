@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FF0000"/> <!-- Красный цвет для точки -->
+    <size android:width="8dp" android:height="8dp"/> <!-- Размер точки -->
+    <corners android:radius="4dp"/> <!-- Скругленные углы -->
+</shape>

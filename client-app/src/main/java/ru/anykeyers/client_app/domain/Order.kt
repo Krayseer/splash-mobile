@@ -14,6 +14,10 @@ data class Order (
 
     val address: String,
 
-    val services: List<Service>
+    val services: List<Service>,
+
+    val startTime: Long,
+
+    val endTime: Long
 
 )

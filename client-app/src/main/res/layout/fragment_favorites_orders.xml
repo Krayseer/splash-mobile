@@ -17,28 +17,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Мои заказы"
+            android:text="Избранные заказы"
             android:textSize="28dp"
             android:textStyle="bold"
             android:layout_marginEnd="30dp"
             android:textColor="@color/black"/>
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone"/>
-
-        <!-- TextView для отображения ошибок -->
-        <TextView
-            android:id="@+id/errorTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
-            android:visibility="gone"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="Произошла ошибка при загрузке данных" />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +37,7 @@
                 android:background="@drawable/rounded_card">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/clientOrderRecyclerView"
+                    android:id="@+id/favoriteOrdersRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp" />

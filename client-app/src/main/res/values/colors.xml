@@ -11,6 +11,8 @@
     <color name="gray_300">#B1B4BE</color>
     <color name="gray_700">#4F535E</color>
 
+    <color name="gold">#FFD700</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

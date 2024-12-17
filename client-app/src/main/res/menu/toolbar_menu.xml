@@ -6,4 +6,9 @@
         android:icon="@drawable/logo"
         android:title="Лого"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/dots_vertical"
+        android:title="More"
+        app:showAsAction="always" />
 </menu>
